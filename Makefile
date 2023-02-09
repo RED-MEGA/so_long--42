@@ -6,7 +6,7 @@
 #    By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/08 23:26:08 by reben-ha          #+#    #+#              #
-#    Updated: 2023/02/09 00:52:40 by reben-ha         ###   ########.fr        #
+#    Updated: 2023/02/09 16:09:25 by reben-ha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIB = ./libft/libft.a
 
 SRC = so_long.c
 
-OBJ = so_long.c
+OBJ = $(SRC:.c=.o)
 
 #BSRC = 
 
