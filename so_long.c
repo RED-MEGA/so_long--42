@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 23:26:08 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/10 00:50:11 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/10 18:41:53 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,32 +77,33 @@ void	check_map(char **map, int len)
 	// int		i;
 
 	// top_line = ft_strlen(map[0]);
-	// i = 0;
+	// i = -1;
 	// while (map[++i])
 	// {
 	// 	printf("%d = %s ?", i, map[i]);
 	// 	if (top_line != ft_strlen(map[i]))
-	// 		return (ft_printf(2, "Error : Map not rectangle\n"));
+	// 		return (ft_printf(2, "Error : Map not rectangle\n"), exit(1));
 	// }
 	// i = 0;
 	// while (map[0][i] && map[len][i])
 	// {
 	// 	if (map[0][i] != 1 || map[len][i] != 1)
-	// 		return (ft_printf(2, "Error : Edges not fill with 1\n"));
+	// 		return (ft_printf(2, "Error : Edges not fill with 1\n"), exit(1));
 	// }
 	// len = top_line - 1;
 	// i = 0;
 	// while (map[i][0] && map[i][len])
 	// {
 	// 	if (map[0][i] != 1 || map[len][i] != 1)
-	// 		return (ft_printf(2, "Error : Edges not fill with 1\n"));
+	// 		return (ft_printf(2, "Error : Edges not fill with 1\n"), exit(1));
 	// }
-	char **str = copy_map(map, len);
-	check_player(str, fp(map).i, fp(map).j);
-	for (size_t i = 0; i < 12; i++)
-	{
-		printf("%s", map[i]);
-	}
+	// char **str = copy_map(map, len);
+	// check_player(str, fp(map).i, fp(map).j);
+	len = 0;
+	// for (size_t i = 0; i < 13; i++)
+	// {
+	// 	printf("%s", map[i]);
+	// }
 }
 
 void	ft_input_manage(char *map_file)
@@ -133,12 +134,13 @@ void	ft_input_manage(char *map_file)
 	close(fd);
 	fd = open(map_file, O_RDONLY);
 	ft_error(fd, 1);
-	i = -1;
+	i = 0;
 	while (1)
 	{
-		map[++i] = get_next_line(fd);
+		map[i] = get_next_line(fd);
 		if (!map[i])
 			break ;
+		i++;
 	}
 	check_map(map, i);
 }
