@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 23:26:08 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/10 18:42:14 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/10 23:00:44 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_loc	fp(char **map)
 	t_loc	loc;
 
 	loc.i = -1;
-	while (map[loc.i])
+	while (map[++loc.i])
 	{
 		loc.j = -1;
 		while (map[loc.i][++loc.j])
@@ -39,8 +39,8 @@ char	**copy_map(char **map, int len)
 {
 	char	**new_map;
 	int		i;
-
-	new_map = (char **)malloc(len * sizeof(char *));
+	// printf("> %d <", len);
+	new_map = (char **)malloc(len * sizeof(char *) + 1);
 	i = -1;
 	while (map[++i])
 		new_map[i] = ft_strdup(map[i]);
@@ -80,30 +80,28 @@ void	check_map(char **map, int len)
 	i = -1;
 	while (map[++i])
 	{
-		printf("%d = %s ?", i, map[i]);
 		if (top_line != ft_strlen(map[i]))
 			return (ft_printf(2, "Error : Map not rectangle\n"), exit(1));
-	}
-	i = 0;
-	while (map[0][i] && map[len][i])
+	} 
+	top_line -= 1;
+	i = -1;
+	while (++i <= (int)top_line)
 	{
-		if (map[0][i] != 1 || map[len][i] != 1)
+		if (map[0][i] != '1' || map[len][i] != '1')
 			return (ft_printf(2, "Error : Edges not fill with 1\n"), exit(1));
 	}
-	len = top_line - 1;
-	i = 0;
-	while (map[i][0] && map[i][len])
+	i = -1;
+	while (++i <= len)
 	{
-		if (map[0][i] != 1 || map[len][i] != 1)
+		if (map[i][0] != '1' || map[i][top_line] != '1')
 			return (ft_printf(2, "Error : Edges not fill with 1\n"), exit(1));
 	}
-	char **str = copy_map(map, len);
+	char **str = copy_map(map, len + 1);
 	check_player(str, fp(map).i, fp(map).j);
-	len = 0;
-	// for (size_t i = 0; i < 13; i++)
-	// {
-	// 	printf("%s", map[i]);
-	// }
+	for (size_t i = 0; i < 12; i++)
+		printf("%s\n", str[i]);
+
+	// printf("i = %d, j = %d\n", fp(map).i, fp(map).j);
 }
 
 void	ft_input_manage(char *map_file)
@@ -130,19 +128,26 @@ void	ft_input_manage(char *map_file)
 	len = i;
 	if (str == NULL && i == 0)
 		return (ft_printf(2, "Error : File is empty\n"), exit(1));
-	map = (char **)malloc(len * sizeof(char *));
+	map = (char **)malloc(len * sizeof(char *) + 1);
 	close(fd);
 	fd = open(map_file, O_RDONLY);
 	ft_error(fd, 1);
-	i = 0;
+	i = -1;
 	while (1)
 	{
-		map[i] = get_next_line(fd);
+		map[++i] = get_next_line(fd);
 		if (!map[i])
 			break ;
-		i++;
 	}
-	check_map(map, i);
+
+	i = -1;
+	while (map[++i])
+	{
+		str = map[i];
+		map[i] = ft_substr(map[i], 0, ft_strlen(map[i]) - 1);
+		free(str);
+	}
+	check_map(map, i - 1);
 }
 
 int	main(int argc, char **argv)
