@@ -6,7 +6,7 @@
 #    By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/08 23:26:08 by reben-ha          #+#    #+#              #
-#    Updated: 2023/02/10 21:16:22 by reben-ha         ###   ########.fr        #
+#    Updated: 2023/02/11 01:08:19 by reben-ha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,9 @@ NAME = so_long
 
 LIB = ./libft/libft.a
 
-SRC = so_long.c
+SRC = so_long.c \
+		mandatory/input_manage_part_one.c \
+		mandatory/input_manage_part_two.c
 
 OBJ = $(SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 23:26:10 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/10 00:38:33 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/11 01:08:46 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,15 @@ typedef struct s_struct
 	int		j;
 }			t_loc;
 
+void    ft_error(int status, int code);
+void	ft_free(char **str);
+
+void	ft_input_manage(char *map_file);
+void	check_ex_nb(char **map);
+t_loc	fp(char **map, char c, int option);
+void	check_map(char **map, int len);
+char	**copy_map(char **map, int len);
+void	check_player(char **map, int i, int j);
+void	path_player(char **map, int i, int j);
 
 #endif
