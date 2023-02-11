@@ -6,7 +6,7 @@
 #    By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/08 23:26:08 by reben-ha          #+#    #+#              #
-#    Updated: 2023/02/11 01:08:19 by reben-ha         ###   ########.fr        #
+#    Updated: 2023/02/11 22:08:57 by reben-ha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,13 +50,13 @@ LIB_OBJ = ./libft/ft_substr.o \
 all : $(NAME)
 
 $(NAME) : $(OBJ) $(LIB) $(LIB_OBJ)
-	gcc -g $(OBJ) $(LIB) -o $(NAME)
+	gcc -g $(OBJ) $(LIB) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 # -Wall -Wextra -Werror
 $(LIB) : ./libft/libft.h
 	make -C ./libft
 
 %.o : %.c so_long.h
-	gcc -g -c $< -o $@
+	gcc -g -Imlx -c $< -o $@
 #-Wall -Wextra -Werror
 # bonus : $(BOBJ) $(LIB) $(LIB_OBJ)
 #         rm -f $(OBJ)
