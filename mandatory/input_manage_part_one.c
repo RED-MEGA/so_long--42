@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 01:01:25 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/12 19:59:22 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/12 20:18:37 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,49 +65,30 @@ void	check_ex_nb(char **map)
 void	ft_input_manage(char *map_file)
 {
 	int		fd;
-	int		i;
 	int		len;
 	char	*str;
+	char	*full_map;
 	char	**map;
 
 	if (ft_strncmp(ft_strrchr(map_file, '.'), ".ber", 4) != 0)
 		return (ft_printf(2, "Error : Invalid argument\n"), exit(1));
 	fd = open(map_file, O_RDONLY);
 	ft_error(fd, 1);
-	i = 0;
+	//start 
+	full_map = NULL;
+	str = NULL;
 	while (1)
 	{
-		str = get_next_line(fd);
 		free(str);
+		str = get_next_line(fd);
 		if (!str)
 			break ;
-		i++;
+		full_map = ft_strjoin(full_map, str);
 	}
-	len = i;
-	if (str == NULL && i == 0)
-		return (ft_printf(2, "Error : File is empty\n"), exit(1));
-	map = (char **)malloc(len * sizeof(char *) + 1);
-	close(fd);
-	fd = open(map_file, O_RDONLY);
-	ft_error(fd, 1);
-	i = -1;
-	while (1)
-	{
-		map[++i] = get_next_line(fd);
-		if (!map[i])
-			break ;
-	}
-	i = -1;
-	while (map[++i])
-	{
-		str = map[i];
-		map[i] = ft_substr(map[i], 0, ft_strlen(map[i]) - 1);
-		free(str);
-	}
-
-	for (size_t i = 0; map[i]; i++)
-		printf("%s\n", map[i]);
-	
+	map = ft_split(full_map, '\n');
+	len = 0;
+	while (map[len])
+		len++;
 	check_ex_nb(map);
-	check_map(map, i - 1);
+	check_map(map, len - 1);
 }
