@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 23:26:10 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/12 20:40:06 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/12 23:01:02 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,13 @@ typedef struct s_image
 	void	*img;
 }			t_image;
 
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
 
 void    ft_error(int status, int code);
 void	ft_free(char **str);

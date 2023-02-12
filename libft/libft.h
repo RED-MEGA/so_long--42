@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 18:34:12 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/09 00:28:56 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/13 00:22:09 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
+char	*ft_itoa(int n);
 char	**ft_split(char const *s, char c);
 size_t	ft_strlen(const char *str);
 int		ft_strncmp(const char *str1, const char *str2, size_t size);

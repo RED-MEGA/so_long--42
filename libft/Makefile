@@ -6,7 +6,7 @@
 #    By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/18 16:20:52 by reben-ha          #+#    #+#              #
-#    Updated: 2023/02/11 22:14:29 by reben-ha         ###   ########.fr        #
+#    Updated: 2023/02/13 00:21:40 by reben-ha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ SRC = ft_substr.c \
 		ft_lstsize.c \
 		ft_lstadd_back.c \
 		ft_lstclear.c \
-		ft_lstlast.c
+		ft_lstlast.c \
+		ft_itoa.c
 
 OBJ = $(SRC:.c=.o)
 
