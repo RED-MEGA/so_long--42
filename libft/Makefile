@@ -6,7 +6,7 @@
 #    By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/18 16:20:52 by reben-ha          #+#    #+#              #
-#    Updated: 2023/02/10 21:16:43 by reben-ha         ###   ########.fr        #
+#    Updated: 2023/02/11 22:14:29 by reben-ha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ $(NAME) : $(OBJ)
 	ar -rc $(NAME) $(OBJ)
 
 %.o : %.c libft.h
-	gcc -g -Wall -Wextra -Werror -c $< -o $@
+	gcc -g -Wall -Wextra -Werror -Imlx -c $< -o $@
 
 clean :
 	rm -f $(OBJ)
