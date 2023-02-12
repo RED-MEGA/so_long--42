@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 01:01:25 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/12 20:18:37 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/12 20:26:14 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	check_ex_nb(char **map)
 	}
 }
 
-void	ft_input_manage(char *map_file)
+char	**ft_input_manage(char *map_file)
 {
 	int		fd;
 	int		len;
@@ -71,10 +71,9 @@ void	ft_input_manage(char *map_file)
 	char	**map;
 
 	if (ft_strncmp(ft_strrchr(map_file, '.'), ".ber", 4) != 0)
-		return (ft_printf(2, "Error : Invalid argument\n"), exit(1));
+		return (ft_printf(2, "Error : Invalid argument\n"), exit(1), NULL);
 	fd = open(map_file, O_RDONLY);
 	ft_error(fd, 1);
-	//start 
 	full_map = NULL;
 	str = NULL;
 	while (1)
@@ -91,4 +90,5 @@ void	ft_input_manage(char *map_file)
 		len++;
 	check_ex_nb(map);
 	check_map(map, len - 1);
+	return (map);
 }
