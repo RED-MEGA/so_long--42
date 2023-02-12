@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 01:01:25 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/11 01:06:01 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/12 19:56:24 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,10 @@ void	ft_input_manage(char *map_file)
 		map[i] = ft_substr(map[i], 0, ft_strlen(map[i]) - 1);
 		free(str);
 	}
+
+	for (size_t i = 0; map[i]; i++)
+		printf("%s\n", map[i]);
+	
 	check_ex_nb(map);
 	check_map(map, i - 1);
 }
