@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 23:26:10 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/13 05:04:44 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/13 05:44:55 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 // 	keyup    	   126
 // 	keyleft  	   123
 // 	keydown  	   125
-// 	keyright 	   125
+// 	keyright 	   124
 // 		W	 	    13
 // 		A	 		0
 // 		D	 		2
@@ -42,14 +42,6 @@ typedef struct s_struct
 	int		j;
 }			t_loc;
 
-typedef struct s_mlx_win
-{
-	int		x;
-	int		y;
-	void	*mlx;
-	void	*mlx_win;
-	void	*img;
-}			t_mlx_win;
 
 typedef struct s_player
 {
@@ -67,6 +59,19 @@ typedef struct s_image
 	void		*exit;
 	t_player	player;
 }			t_image;
+
+typedef struct s_mlx_win
+{
+	t_image	imgx;
+	int		x;
+	int		y;
+	void	*mlx;
+	void	*mlx_win;
+	void	*img;
+	char	**map;
+	int		width;
+	int		height;
+}			t_mlx_win;
 
 void    ft_error(int status, int code);
 void    ft_error_str(void *status, int code);

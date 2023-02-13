@@ -71,15 +71,49 @@ void	ft_put_to_screen(char **map, t_image *img, t_mlx_win *mlx_x, int width, int
 	}
 }
 
-// int	fun(int keycode, t_mlx_win *t_mlx)
-// {
-// 	printf("%d\n", keycode);
-// 	if (keycode == 126)
-// 	{
-// 		t_mlx.x += ;
-// 		t_mlx.y += ;
-// 	}
-// }
+int	apply_key(int keycode, t_mlx_win *mlx_x)
+{
+	t_loc	loc;
+
+	loc = fp(mlx_x->map, 'P', 'l');
+	if (keycode == 126 || keycode == 13)
+	{
+		if (mlx_x->map[loc.i - 1][loc.j] == '1')
+			return (-1);
+		mlx_x->map[loc.i - 1][loc.j] = 'P';
+		mlx_x->map[loc.i][loc.j] = '0';
+	}
+	else if (keycode == 123 || keycode == 0)
+	{
+		if (mlx_x->map[loc.i][loc.j - 1] == '1')
+			return (-1);
+		mlx_x->map[loc.i][loc.j - 1] = 'P';
+		mlx_x->map[loc.i][loc.j] = '0';
+	}
+	else if (keycode == 125 || keycode == 1)
+	{
+		if (mlx_x->map[loc.i + 1][loc.j] == '1')
+			return (-1);
+		mlx_x->map[loc.i + 1][loc.j] = 'P';
+		mlx_x->map[loc.i][loc.j] = '0';
+	}
+	else if (keycode == 124 || keycode == 2)
+	{
+		if (mlx_x->map[loc.i][loc.j + 1] == '1')
+			return (-1);
+		mlx_x->map[loc.i][loc.j + 1] = 'P';
+		mlx_x->map[loc.i][loc.j] = '0';
+	}
+	// for (size_t i = 0; i < loc.i; i++)
+	// {
+	// 	for (size_t i = 0; i < loc.j; i++)
+	// 		dprintf(2, "%s", );
+		
+	// }
+	
+	ft_put_to_screen(mlx_x->map, &mlx_x->imgx, mlx_x, mlx_x->width, mlx_x->height);
+	return (0);
+}
 
 int	main(int argc, char **argv)
 {
@@ -92,10 +126,10 @@ int	main(int argc, char **argv)
 
 	if (argc <= 1)
 		return (ft_printf(2, "Error : Invalid argument\n"), 1);
-	map = ft_input_manage(argv[1]);
-	mlx_x.x = ft_strlen(map[0]);
+	mlx_x.map = ft_input_manage(argv[1]);
+	mlx_x.x = ft_strlen(mlx_x.map[0]);
 	mlx_x.y = 0;
-	while (map[mlx_x.y])
+	while (mlx_x.map[mlx_x.y])
 		mlx_x.y++;
 
 	// Start in mlX
@@ -113,14 +147,13 @@ int	main(int argc, char **argv)
 
 
 	// Display ...
-	ft_put_to_screen(map, &img, &mlx_x, width, height);
+	ft_put_to_screen(mlx_x.map, &img, &mlx_x, width, height);
 
-
-
-	// mlx_destroy_image(,);
-	// mlx_x.x = fp(map, 'P', 'l').j;
-	// mlx_x.y = fp(map, 'P', 'l').i;
-	// mlx_hook(mlx_x.mlx_win, 2, 1L<<0, fun, &mlx_x);
+	// game start 
+	mlx_x.imgx = img;
+	mlx_x.height = height;
+	mlx_x.width = width;
+	mlx_hook(mlx_x.mlx_win, 2, 0, apply_key, &mlx_x);
 
 	// Loop
 	mlx_string_put(mlx_x.mlx, mlx_x.mlx_win, 0, 0, 0x00FF0000, "Hoooooot game");
