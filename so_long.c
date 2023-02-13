@@ -22,6 +22,8 @@ void    ft_error_str(void *status, int code)
 		return (perror("Error "), exit(code));
 }
 
+// int	fun(int keycode, t_mlx_win *t_mlx);
+
 int	main(int argc, char **argv)
 {
 	t_mlx_win	t_mlx;
@@ -50,6 +52,9 @@ int	main(int argc, char **argv)
 	t_mlx.mlx_win = mlx_new_window(t_mlx.mlx, t_mlx.x * 32, t_mlx.y * 32, "So_long REDMEGA-Edition");
 
 	// Open Images
+
+
+	
 	img.player.front = mlx_xpm_file_to_image(t_mlx.mlx, "texture/sprites/player/front.xpm", &width, &height);
 	ft_error_str(img.player.front, 1);
 	img.player.back = mlx_xpm_file_to_image(t_mlx.mlx, "texture/sprites/player/back.xpm", &width, &height);
@@ -91,13 +96,38 @@ int	main(int argc, char **argv)
 	}
 
 	// Hook 
-	
-
-
-
-
+	// 126 keyup
+	// 123 keyleft
+	// 125 keydown
+	// 125 keyright
+	// W 13
+	// A 0
+	// D 2
+ 	// S 1
+	// mlx_destroy_image(,);
+	// t_mlx.x = fp(map, 'P', 'l').j;
+	// t_mlx.y = fp(map, 'P', 'l').i;
+	// mlx_hook(t_mlx.mlx_win, 2, 1L<<0, fun, &t_mlx);
 
 	// Loop
 	mlx_string_put(t_mlx.mlx, t_mlx.mlx_win, 0, 0, 0x00FF0000, "Hoooooot game");
 	mlx_loop(t_mlx.mlx);
 }
+
+// int	fun(int keycode, t_mlx_win *t_mlx)
+// {
+// 	printf("%d\n", keycode);
+// 	if (keycode == 126)
+// 	{
+// 		t_mlx.x += ;
+// 		t_mlx.y += ;
+// 	}
+// }
+
+
+
+
+// input key
+// apply function
+// destroy image
+// rerunder image
