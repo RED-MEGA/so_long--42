@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 23:26:10 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/13 18:27:12 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/13 21:30:45 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include "./libft/libft.h"
 
 # define FAIL -1
+# define KEYPRESS 2
+# define DESTROYNOTIFY 17
 
 // 	Hook         KeyCode
 //
@@ -61,7 +63,7 @@ typedef struct s_image
 
 typedef struct s_mlx_win
 {
-	t_image	imgx;
+	t_image	img;
 	int		x;
 	int		y;
 	void	*mlx;
@@ -70,6 +72,7 @@ typedef struct s_mlx_win
 	char	**map;
 	int		width;
 	int		height;
+	int		coin;
 }			t_mlx_win;
 
 void	ft_error(int status, int code);

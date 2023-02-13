@@ -76,6 +76,9 @@ int	apply_key(int keycode, t_mlx_win *mlx_x)
 {
 	t_loc	loc;
 
+	dprintf(2, "keycode = %d\n", keycode);
+	if (keycode == 53)
+		exit(0);
 	loc = fp(mlx_x->map, 'P', 'l');
 	if (keycode == 126 || keycode == 13)
 	{
@@ -113,14 +116,19 @@ int	apply_key(int keycode, t_mlx_win *mlx_x)
 		mlx_x->map[loc.i][loc.j + 1] = 'P';
 		mlx_x->map[loc.i][loc.j] = '0';
 	}
-	ft_put_to_screen(mlx_x->map, &mlx_x->imgx, mlx_x, mlx_x->width, mlx_x->height);
+	ft_put_to_screen(mlx_x->map, &mlx_x->img, mlx_x, mlx_x->width, mlx_x->height);
 	return (0);
+}
+
+int	exit_window(void *param)
+{
+	(void)param;
+	exit(0);
 }
 
 int	main(int argc, char **argv)
 {
 	t_mlx_win	mlx_x;
-	t_image		img;
 	char		**map;
 	int			width;
 	int			height;
@@ -135,16 +143,16 @@ int	main(int argc, char **argv)
 	// Start in mlX
 	mlx_x.mlx = mlx_init();
 	// Open Images
-	ft_open_image(&img, &mlx_x, &width, &height);
+	ft_open_image(&mlx_x.img, &mlx_x, &width, &height);
 	// Open Window
 	mlx_x.mlx_win = mlx_new_window(mlx_x.mlx, mlx_x.x * width, mlx_x.y * height, "So_long REDMEGA-Edition");
 	// Display ...
-	ft_put_to_screen(mlx_x.map, &img, &mlx_x, width, height);
-	// game start 
-	mlx_x.imgx = img;
+	ft_put_to_screen(mlx_x.map, &mlx_x.img, &mlx_x, width, height);
+	// game start
 	mlx_x.height = height;
 	mlx_x.width = width;
-	mlx_hook(mlx_x.mlx_win, 2, 0, apply_key, &mlx_x);
+	mlx_hook(mlx_x.mlx_win, KEYPRESS, 0, apply_key, &mlx_x);
+	mlx_hook(mlx_x.mlx_win, DESTROYNOTIFY, 0, exit_window, 0);
 	// Loop
 	mlx_string_put(mlx_x.mlx, mlx_x.mlx_win, 0, 0, 0x00FF0000, "Hoooooot game");
 	mlx_loop(mlx_x.mlx);
