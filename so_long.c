@@ -129,7 +129,6 @@ int	exit_window(void *param)
 int	main(int argc, char **argv)
 {
 	t_mlx_win	mlx_x;
-	char		**map;
 	int			width;
 	int			height;
 
