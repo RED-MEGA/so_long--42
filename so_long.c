@@ -128,7 +128,6 @@ int	main(int argc, char **argv)
 	t_mlx_win	mlx_x;
 	t_image		img;
 	char		**map;
-	int			len;
 	int			width;
 	int			height;
 
@@ -167,12 +166,3 @@ int	main(int argc, char **argv)
 	mlx_string_put(mlx_x.mlx, mlx_x.mlx_win, 0, 0, 0x00FF0000, "Hoooooot game");
 	mlx_loop(mlx_x.mlx);
 }
-
-
-
-
-
-// input key
-// apply function
-// destroy image
-// rerunder image

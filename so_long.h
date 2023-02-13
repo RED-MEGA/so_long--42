@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 23:26:10 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/13 05:44:55 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/13 18:08:18 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <mlx.h>
 # include "./libft/libft.h"
 
-#define FAIL -1
+# define FAIL -1
 
 // 	Hook         KeyCode
 //
@@ -41,7 +41,6 @@ typedef struct s_struct
 	int		i;
 	int		j;
 }			t_loc;
-
 
 typedef struct s_player
 {
@@ -73,8 +72,8 @@ typedef struct s_mlx_win
 	int		height;
 }			t_mlx_win;
 
-void    ft_error(int status, int code);
-void    ft_error_str(void *status, int code);
+void	ft_error(int status, int code);
+void	ft_error_str(void *status, int code);
 void	ft_free(char **str);
 char	**ft_input_manage(char *map_file);
 void	check_ex_nb(char **map);
