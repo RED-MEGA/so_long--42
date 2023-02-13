@@ -10,13 +10,13 @@ void	ft_free(char **str)
 	free(str);
 }
 
-void    ft_error(int status, int code)
+void	ft_error(int status, int code)
 {
 	if (status == FAIL)
 		return (perror("Error "), exit(code));
 }
 
-void    ft_error_str(void *status, int code)
+void	ft_error_str(void *status, int code)
 {
 	if (status == NULL)
 		return (perror("Error "), exit(code));
@@ -112,13 +112,6 @@ int	apply_key(int keycode, t_mlx_win *mlx_x)
 		mlx_x->map[loc.i][loc.j + 1] = 'P';
 		mlx_x->map[loc.i][loc.j] = '0';
 	}
-	// for (size_t i = 0; i < loc.i; i++)
-	// {
-	// 	for (size_t i = 0; i < loc.j; i++)
-	// 		dprintf(2, "%s", );
-		
-	// }
-	
 	ft_put_to_screen(mlx_x->map, &mlx_x->imgx, mlx_x, mlx_x->width, mlx_x->height);
 	return (0);
 }
@@ -138,30 +131,19 @@ int	main(int argc, char **argv)
 	mlx_x.y = 0;
 	while (mlx_x.map[mlx_x.y])
 		mlx_x.y++;
-
 	// Start in mlX
-
 	mlx_x.mlx = mlx_init();
-
 	// Open Images
-
-
 	ft_open_image(&img, &mlx_x, &width, &height);
-
 	// Open Windows in Macos HHHHH
-
 	mlx_x.mlx_win = mlx_new_window(mlx_x.mlx, mlx_x.x * width, mlx_x.y * height, "So_long REDMEGA-Edition");
-
-
 	// Display ...
 	ft_put_to_screen(mlx_x.map, &img, &mlx_x, width, height);
-
 	// game start 
 	mlx_x.imgx = img;
 	mlx_x.height = height;
 	mlx_x.width = width;
 	mlx_hook(mlx_x.mlx_win, 2, 0, apply_key, &mlx_x);
-
 	// Loop
 	mlx_string_put(mlx_x.mlx, mlx_x.mlx_win, 0, 0, 0x00FF0000, "Hoooooot game");
 	mlx_loop(mlx_x.mlx);
