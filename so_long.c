@@ -80,6 +80,8 @@ int	apply_key(int keycode, t_mlx_win *mlx_x)
 	{
 		if (mlx_x->map[loc.i - 1][loc.j] == '1')
 			return (-1);
+		if (mlx_x->map[loc.i - 1][loc.j] == 'E')
+			return (exit(1), 1);
 		mlx_x->map[loc.i - 1][loc.j] = 'P';
 		mlx_x->map[loc.i][loc.j] = '0';
 	}
@@ -87,6 +89,8 @@ int	apply_key(int keycode, t_mlx_win *mlx_x)
 	{
 		if (mlx_x->map[loc.i][loc.j - 1] == '1')
 			return (-1);
+		if (mlx_x->map[loc.i][loc.j - 1] == 'E')
+			return (exit(1), 1);
 		mlx_x->map[loc.i][loc.j - 1] = 'P';
 		mlx_x->map[loc.i][loc.j] = '0';
 	}
@@ -94,6 +98,8 @@ int	apply_key(int keycode, t_mlx_win *mlx_x)
 	{
 		if (mlx_x->map[loc.i + 1][loc.j] == '1')
 			return (-1);
+		if (mlx_x->map[loc.i + 1][loc.j] == 'E')
+			return (exit(1), 1);
 		mlx_x->map[loc.i + 1][loc.j] = 'P';
 		mlx_x->map[loc.i][loc.j] = '0';
 	}
@@ -101,6 +107,8 @@ int	apply_key(int keycode, t_mlx_win *mlx_x)
 	{
 		if (mlx_x->map[loc.i][loc.j + 1] == '1')
 			return (-1);
+		if (mlx_x->map[loc.i][loc.j + 1] == 'E')
+			return (exit(1), 1);
 		mlx_x->map[loc.i][loc.j + 1] = 'P';
 		mlx_x->map[loc.i][loc.j] = '0';
 	}
