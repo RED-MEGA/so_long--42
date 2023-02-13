@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 23:26:10 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/13 02:59:38 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/13 05:04:44 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,17 @@
 # include "./libft/libft.h"
 
 #define FAIL -1
+
+// 	Hook         KeyCode
+//
+// 	keyup    	   126
+// 	keyleft  	   123
+// 	keydown  	   125
+// 	keyright 	   125
+// 		W	 	    13
+// 		A	 		0
+// 		D	 		2
+// 		S	 		1
 
 typedef struct s_struct
 {
