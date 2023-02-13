@@ -48,6 +48,7 @@ void	ft_put_to_screen(char **map, t_image *img, t_mlx_win *mlx_x, int width, int
 	int		x;
 	int		y;
 
+	// mlx_clear_window(, );
 	y = -1;
 	printf("y = %d <> x = %d\n", mlx_x->y, mlx_x->x);
 	while (++y < mlx_x->y)

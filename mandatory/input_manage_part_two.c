@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 01:01:27 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/11 01:06:35 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/13 18:20:15 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	path_player(char **map, int i, int j)
 
 void	check_player(char **map, int i, int j)
 {
-	t_loc loc;
+	t_loc	loc;
 
 	path_player(map, i, j);
 	loc = fp(map, 'E', 'l');
@@ -74,7 +74,7 @@ void	check_map(char **map, int len)
 	{
 		if (top_line != ft_strlen(map[i]))
 			return (ft_printf(2, "Error : Map not rectangle\n"), exit(1));
-	} 
+	}
 	top_line -= 1;
 	i = -1;
 	while (++i <= (int)top_line)
