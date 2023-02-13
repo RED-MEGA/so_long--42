@@ -135,7 +135,7 @@ int	main(int argc, char **argv)
 	mlx_x.mlx = mlx_init();
 	// Open Images
 	ft_open_image(&img, &mlx_x, &width, &height);
-	// Open Windows in Macos HHHHH
+	// Open Window
 	mlx_x.mlx_win = mlx_new_window(mlx_x.mlx, mlx_x.x * width, mlx_x.y * height, "So_long REDMEGA-Edition");
 	// Display ...
 	ft_put_to_screen(mlx_x.map, &img, &mlx_x, width, height);
