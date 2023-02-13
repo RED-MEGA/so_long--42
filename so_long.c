@@ -50,13 +50,11 @@ void	ft_put_to_screen(char **map, t_image *img, t_mlx_win *mlx_x, int width, int
 
 	// mlx_clear_window(, );
 	y = -1;
-	printf("y = %d <> x = %d\n", mlx_x->y, mlx_x->x);
 	while (++y < mlx_x->y)
 	{
 		x = -1;
 		while (++x < mlx_x->x)
 		{
-			dprintf(2, "y = %d, x = %d >> %p %c\n", y, x, map[y], map[y][x]);
 			if (map[y][x] == '0')
 				img_ch = img->floor;
 			else if (map[y][x] == '1')
@@ -85,7 +83,7 @@ int	apply_key(int keycode, t_mlx_win *mlx_x)
 		if (mlx_x->map[loc.i - 1][loc.j] == '1')
 			return (-1);
 		if (mlx_x->map[loc.i - 1][loc.j] == 'E')
-			return (exit(1), 1);
+			exit(1);
 		mlx_x->map[loc.i - 1][loc.j] = 'P';
 		mlx_x->map[loc.i][loc.j] = '0';
 	}
@@ -94,7 +92,7 @@ int	apply_key(int keycode, t_mlx_win *mlx_x)
 		if (mlx_x->map[loc.i][loc.j - 1] == '1')
 			return (-1);
 		if (mlx_x->map[loc.i][loc.j - 1] == 'E')
-			return (exit(1), 1);
+			exit(1);
 		mlx_x->map[loc.i][loc.j - 1] = 'P';
 		mlx_x->map[loc.i][loc.j] = '0';
 	}
@@ -103,7 +101,7 @@ int	apply_key(int keycode, t_mlx_win *mlx_x)
 		if (mlx_x->map[loc.i + 1][loc.j] == '1')
 			return (-1);
 		if (mlx_x->map[loc.i + 1][loc.j] == 'E')
-			return (exit(1), 1);
+			exit(1);
 		mlx_x->map[loc.i + 1][loc.j] = 'P';
 		mlx_x->map[loc.i][loc.j] = '0';
 	}
@@ -112,7 +110,7 @@ int	apply_key(int keycode, t_mlx_win *mlx_x)
 		if (mlx_x->map[loc.i][loc.j + 1] == '1')
 			return (-1);
 		if (mlx_x->map[loc.i][loc.j + 1] == 'E')
-			return (exit(1), 1);
+			exit(1);
 		mlx_x->map[loc.i][loc.j + 1] = 'P';
 		mlx_x->map[loc.i][loc.j] = '0';
 	}
