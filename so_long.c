@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 23:26:08 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/13 00:29:09 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/13 01:23:01 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int argc, char **argv)
 	int		len;
 	int		img_width;
 	int		img_height;
-	char	*path_image = "wall.xpm";
+	char	*path_image = "kars.xpm";
 
 	if (argc <= 1)
 		return (ft_printf(2, "Error : Invalid argument\n"), 1);
@@ -50,22 +50,21 @@ int	main(int argc, char **argv)
 
 	img.mlx = mlx_init();
 
-	img.mlx_win = mlx_new_window(img.mlx, img.x * 50, img.y * 50, "So_long REDMEGA-Edition");
+	img.mlx_win = mlx_new_window(img.mlx, img.x * 70, img.y * 70, "So_long REDMEGA-Edition");
 
 	img.img = mlx_xpm_file_to_image(img.mlx, path_image, &img_width, &img_height);
 
 	int i, j;
 	i = -1;
-	j = -1;
+	j = 0;
 	// while (++i < img.x * 50)
 	// {
-	// 	while (++j < img.y * 50)
-	// 	{
-			mlx_string_put(img.mlx, img.mlx_win, 0, 0, 0x00FF0000, ft_strjoin_gnl(ft_strjoin(ft_itoa(img_width), " "), ft_itoa(img_height)));
-			mlx_put_image_to_window(img.mlx, img.mlx_win, img.img, 50, 50);
-			// mlx_put_image_to_window(img.mlx, img.mlx_win, img.img, i + 50, j + 50);
-	// 	}
+	while (++i < img.x)
+	{
+		mlx_string_put(img.mlx, img.mlx_win, 0, 0, 0x00FF0000, ft_strjoin_gnl(ft_strjoin(ft_itoa(img_width), " "), ft_itoa(img_height)));
+		mlx_put_image_to_window(img.mlx, img.mlx_win, img.img, i * 70, j);
+		// mlx_put_image_to_window(img.mlx, img.mlx_win, img.img, i + 50, j + 50);
+	}
 	// }
-
 	mlx_loop(img.mlx);
 }
