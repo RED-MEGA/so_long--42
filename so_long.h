@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 23:26:10 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/13 01:46:10 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/13 02:19:09 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,26 @@ typedef struct s_mlx_win
 	void	*img;
 }			t_mlx_win;
 
-typedef struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
+typedef struct s_player
+{
+	void	*front
+	void	*back
+	void	*right
+	void	*left
+}			t_player;
+
+typedef struct s_image
+{
+	void		*floor
+	void		*wall
+	void		*coin
+	void		*exit
+	t_player	player;
+}			t_image;
 
 void    ft_error(int status, int code);
+void    ft_error_str(void *status, int code);
 void	ft_free(char **str);
-
 char	**ft_input_manage(char *map_file);
 void	check_ex_nb(char **map);
 t_loc	fp(char **map, char c, int option);

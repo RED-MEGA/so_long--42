@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/08 23:26:08 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/13 01:50:17 by reben-ha         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "so_long.h"
 
 void	ft_free(char **str)
@@ -28,9 +16,16 @@ void    ft_error(int status, int code)
 		return (perror("Error "), exit(code));
 }
 
+void    ft_error_str(void *status, int code)
+{
+	if (status == NULL)
+		return (perror("Error "), exit(code));
+}
+
 int	main(int argc, char **argv)
 {
-	t_mlx_win	img;
+	t_mlx_win	t_mlx;
+	t_image		img;
 	char		**map;
 	int			len;
 	int			width;
@@ -38,29 +33,57 @@ int	main(int argc, char **argv)
 	char		*path_image = "kars.xpm";
 	int			x;
 	int			y;
+	void		*img_ch;
 
 	if (argc <= 1)
 		return (ft_printf(2, "Error : Invalid argument\n"), 1);
 	map = ft_input_manage(argv[1]);
-	img.x = ft_strlen(map[0]);
-	img.y = 0;
-	while (map[img.y])
-		img.y++;
+	t_mlx.x = ft_strlen(map[0]);
+	t_mlx.y = 0;
+	while (map[t_mlx.y])
+		t_mlx.y++;
 
 	// Start in mlX
 
-	img.mlx = mlx_init();
+	t_mlx.mlx = mlx_init();
 
-	img.mlx_win = mlx_new_window(img.mlx, img.x * 70, img.y * 70, "So_long REDMEGA-Edition");
+	t_mlx.mlx_win = mlx_new_window(t_mlx.mlx, t_mlx.x * 70, t_mlx.y * 70, "So_long REDMEGA-Edition");
 
-	img.img = mlx_xpm_file_to_image(img.mlx, path_image, &width, &height);
+	// Open Images
+	img.player.front = mlx_xpm_file_to_image(t_mlx.mlx, t_mlx.mlx_win, &width, &height);
+	ft_error_str(img.player.front, 1);
+	img.player.back = mlx_xpm_file_to_image(t_mlx.mlx, t_mlx.mlx_win, &width, &height);
+	ft_error_str(img.player.back, 1);
+	img.player.right = mlx_xpm_file_to_image(t_mlx.mlx, t_mlx.mlx_win, &width, &height);
+	ft_error_str(img.player.right, 1);
+	img.player.left = mlx_xpm_file_to_image(t_mlx.mlx, t_mlx.mlx_win, &width, &height);
+	ft_error_str(img.player.left, 1);
+	img.floor = mlx_xpm_file_to_image(t_mlx.mlx, t_mlx.mlx_win, &width, &height);
+	ft_error_str(img.floor, 1);
+	img.wall = mlx_xpm_file_to_image(t_mlx.mlx, t_mlx.mlx_win, &width, &height);
+	ft_error_str(img.wall, 1);
+	img.coin = mlx_xpm_file_to_image(t_mlx.mlx, t_mlx.mlx_win, &width, &height);
+	ft_error_str(img.coin, 1);
+	img.exit = mlx_xpm_file_to_image(t_mlx.mlx, t_mlx.mlx_win, &width, &height);
+	ft_error_str(img.exit, 1);
 
+	// Display ...
 	x = -1;
-	y = 0;
-	while (++x < img.x)
+	y = -1;
+	while (++x <= t_mlx.y)
 	{
-		mlx_string_put(img.mlx, img.mlx_win, 0, 0, 0x00FF0000, ft_strjoin_gnl(ft_strjoin(ft_itoa(width), " "), ft_itoa(height)));
-		mlx_put_image_to_window(img.mlx, img.mlx_win, img.img, x * 70, y);
+		while (++y <= t_mlx.x)
+		{
+			
+			map[x][y];
+			mlx_put_image_to_window(t_mlx.mlx, t_mlx.mlx_win, img_ch, x, y);
+		}
 	}
-	mlx_loop(img.mlx);
+	
+
+
+
+
+	mlx_string_put(t_mlx.mlx, t_mlx.mlx_win, 0, 0, 0x00FF0000, ft_strjoin_gnl(ft_strjoin(ft_itoa(width), " "), ft_itoa(height)));
+	mlx_loop(t_mlx.mlx);
 }
