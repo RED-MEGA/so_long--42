@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 23:26:10 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/13 02:19:09 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/13 02:59:38 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,18 @@ typedef struct s_mlx_win
 
 typedef struct s_player
 {
-	void	*front
-	void	*back
-	void	*right
-	void	*left
+	void	*front;
+	void	*back;
+	void	*right;
+	void	*left;
 }			t_player;
 
 typedef struct s_image
 {
-	void		*floor
-	void		*wall
-	void		*coin
-	void		*exit
+	void		*floor;
+	void		*wall;
+	void		*coin;
+	void		*exit;
 	t_player	player;
 }			t_image;
 
