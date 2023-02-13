@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 23:26:10 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/12 23:01:02 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/13 01:46:10 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ typedef struct s_struct
 	int		j;
 }			t_loc;
 
-typedef struct s_image
+typedef struct s_mlx_win
 {
 	int		x;
 	int		y;
 	void	*mlx;
 	void	*mlx_win;
 	void	*img;
-}			t_image;
+}			t_mlx_win;
 
 typedef struct	s_data {
 	void	*img;
