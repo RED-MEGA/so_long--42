@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 23:26:10 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/13 21:30:45 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/14 13:41:36 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,10 @@ typedef struct s_mlx_win
 	int		y;
 	void	*mlx;
 	void	*mlx_win;
-	// void	*img;
 	char	**map;
 	int		width;
 	int		height;
-	int		coin;
+	int		moves;
 }			t_mlx_win;
 
 void	ft_error(int status, int code);

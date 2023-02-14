@@ -82,39 +82,52 @@ int	apply_key(int keycode, t_mlx_win *mlx_x)
 	{
 		if (mlx_x->map[loc.i - 1][loc.j] == '1')
 			return (-1);
-		if (mlx_x->map[loc.i - 1][loc.j] == 'E')
+		if (mlx_x->map[loc.i - 1][loc.j] == 'E' && fp(mlx_x->map, 'C', 'l').i == FAIL)
 			exit(1);
+		else if (mlx_x->map[loc.i - 1][loc.j] == 'E')
+			return (-1);
 		mlx_x->map[loc.i - 1][loc.j] = 'P';
 		mlx_x->map[loc.i][loc.j] = '0';
+		mlx_x->moves += 1;
 	}
 	else if (keycode == 123 || keycode == 0)
 	{
 		if (mlx_x->map[loc.i][loc.j - 1] == '1')
 			return (-1);
-		if (mlx_x->map[loc.i][loc.j - 1] == 'E')
+		if (mlx_x->map[loc.i][loc.j - 1] == 'E' && fp(mlx_x->map, 'C', 'l').i == FAIL)
 			exit(1);
+		else if (mlx_x->map[loc.i][loc.j - 1] == 'E')
+			return (-1);
 		mlx_x->map[loc.i][loc.j - 1] = 'P';
 		mlx_x->map[loc.i][loc.j] = '0';
+		mlx_x->moves += 1;
 	}
 	else if (keycode == 125 || keycode == 1)
 	{
 		if (mlx_x->map[loc.i + 1][loc.j] == '1')
 			return (-1);
-		if (mlx_x->map[loc.i + 1][loc.j] == 'E')
+		if (mlx_x->map[loc.i + 1][loc.j] == 'E' && fp(mlx_x->map, 'C', 'l').i == FAIL)
 			exit(1);
+		else if (mlx_x->map[loc.i + 1][loc.j] == 'E')
+			return (-1);
 		mlx_x->map[loc.i + 1][loc.j] = 'P';
 		mlx_x->map[loc.i][loc.j] = '0';
+		mlx_x->moves += 1;
 	}
 	else if (keycode == 124 || keycode == 2)
 	{
 		if (mlx_x->map[loc.i][loc.j + 1] == '1')
 			return (-1);
-		if (mlx_x->map[loc.i][loc.j + 1] == 'E')
+		if (mlx_x->map[loc.i][loc.j + 1] == 'E' && fp(mlx_x->map, 'C', 'l').i == FAIL)
 			exit(1);
+		else if (mlx_x->map[loc.i][loc.j + 1] == 'E')
+			return (-1);
 		mlx_x->map[loc.i][loc.j + 1] = 'P';
 		mlx_x->map[loc.i][loc.j] = '0';
+		mlx_x->moves += 1;
 	}
 	ft_put_to_screen(mlx_x->map, &mlx_x->img, mlx_x, mlx_x->width, mlx_x->height);
+	mlx_string_put(mlx_x->mlx, mlx_x->mlx_win, 32, 32, 0xFFFFFF, ft_itoa(mlx_x->moves));
 	return (0);
 }
 
@@ -133,8 +146,9 @@ int	main(int argc, char **argv)
 	if (argc <= 1)
 		return (ft_printf(2, "Error : Invalid argument\n"), 1);
 	mlx_x.map = ft_input_manage(argv[1]);
-	mlx_x.x = ft_strlen(mlx_x.map[0]);
+	mlx_x.moves = 0;
 	mlx_x.y = 0;
+	mlx_x.x = ft_strlen(mlx_x.map[0]);
 	while (mlx_x.map[mlx_x.y])
 		mlx_x.y++;
 	// Start in mlX
