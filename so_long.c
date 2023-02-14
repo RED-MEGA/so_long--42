@@ -40,6 +40,8 @@ void	ft_open_image(t_image *img, t_mlx_win *mlx_x, int *width, int *height)
 	ft_error_str(img->coin, 1);
 	img->exit = mlx_xpm_file_to_image(mlx_x->mlx, "texture/sprites/exit.xpm", width, height);
 	ft_error_str(img->exit, 1);
+	img->enemy = mlx_xpm_file_to_image(mlx_x->mlx, "texture/sprites/enemy.xpm", width, height);
+	ft_error_str(img->enemy, 1);
 }
 
 void	ft_put_to_screen(char **map, t_image *img, t_mlx_win *mlx_x, int width, int height)
@@ -61,6 +63,8 @@ void	ft_put_to_screen(char **map, t_image *img, t_mlx_win *mlx_x, int width, int
 				img_ch = img->wall;
 			else if (map[y][x] == 'C')
 				img_ch = img->coin;
+			else if (map[y][x] == 'E')
+				img_ch = img->exit;
 			else if (map[y][x] == 'E')
 				img_ch = img->exit;
 			else if (map[y][x] == 'P')
