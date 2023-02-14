@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 01:01:25 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/12 20:26:14 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/14 22:35:38 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	**ft_input_manage(char *map_file)
 	char	*full_map;
 	char	**map;
 
-	if (ft_strncmp(ft_strrchr(map_file, '.'), ".ber", 4) != 0)
+	if (ft_strlen(map_file) < 5 || ft_strncmp(ft_strrchr(map_file, '.'), ".ber\0", 5) != 0)
 		return (ft_printf(2, "Error : Invalid argument\n"), exit(1), NULL);
 	fd = open(map_file, O_RDONLY);
 	ft_error(fd, 1);

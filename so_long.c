@@ -44,13 +44,13 @@ void	ft_open_image(t_image *img, t_mlx_win *mlx_x, int *width, int *height)
 	ft_error_str(img->enemy, 1);
 }
 
-void	ft_put_to_screen(char **map, t_image *img, t_mlx_win *mlx_x, int width, int height)
+void	ft_put_to_screen(char **map, t_image *img, t_mlx_win *mlx_x)
 {
 	void	*img_ch;
 	int		x;
 	int		y;
 
-	// mlx_clear_window(, );
+	mlx_clear_window(mlx_x->mlx, mlx_x->mlx_win);
 	y = -1;
 	while (++y < mlx_x->y)
 	{
@@ -69,7 +69,7 @@ void	ft_put_to_screen(char **map, t_image *img, t_mlx_win *mlx_x, int width, int
 				img_ch = img->exit;
 			else if (map[y][x] == 'P')
 				img_ch = img->player.front;
-			mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, img_ch, x * width, y * height);
+			mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, img_ch, x * mlx_x->width, y * mlx_x->height);
 		}
 	}
 }
@@ -78,7 +78,6 @@ int	apply_key(int keycode, t_mlx_win *mlx_x)
 {
 	t_loc	loc;
 
-	dprintf(2, "keycode = %d\n", keycode);
 	if (keycode == 53)
 		exit(0);
 	loc = fp(mlx_x->map, 'P', 'l');
@@ -130,7 +129,7 @@ int	apply_key(int keycode, t_mlx_win *mlx_x)
 		mlx_x->map[loc.i][loc.j] = '0';
 		mlx_x->moves += 1;
 	}
-	ft_put_to_screen(mlx_x->map, &mlx_x->img, mlx_x, mlx_x->width, mlx_x->height);
+	ft_put_to_screen(mlx_x->map, &mlx_x->img, mlx_x);
 	mlx_string_put(mlx_x->mlx, mlx_x->mlx_win, 32, 32, 0xFFFFFF, ft_itoa(mlx_x->moves));
 	return (0);
 }
@@ -144,8 +143,6 @@ int	exit_window(void *param)
 int	main(int argc, char **argv)
 {
 	t_mlx_win	mlx_x;
-	int			width;
-	int			height;
 
 	if (argc <= 1)
 		return (ft_printf(2, "Error : Invalid argument\n"), 1);
@@ -158,14 +155,14 @@ int	main(int argc, char **argv)
 	// Start in mlX
 	mlx_x.mlx = mlx_init();
 	// Open Images
-	ft_open_image(&mlx_x.img, &mlx_x, &width, &height);
+	ft_open_image(&mlx_x.img, &mlx_x, &mlx_x.width, &mlx_x.height);
 	// Open Window
-	mlx_x.mlx_win = mlx_new_window(mlx_x.mlx, mlx_x.x * width, mlx_x.y * height, "So_long REDMEGA-Edition");
+	mlx_x.mlx_win = mlx_new_window(mlx_x.mlx, mlx_x.x * mlx_x.width, mlx_x.y * mlx_x.height, "So_long REDMEGA-Edition");
 	// Display ...
-	ft_put_to_screen(mlx_x.map, &mlx_x.img, &mlx_x, width, height);
+	ft_put_to_screen(mlx_x.map, &mlx_x.img, &mlx_x);
 	// game start
-	mlx_x.height = height;
-	mlx_x.width = width;
+	// mlx_x.height = height;
+	// mlx_x.width = width;
 	mlx_hook(mlx_x.mlx_win, KEYPRESS, 0, apply_key, &mlx_x);
 	mlx_hook(mlx_x.mlx_win, DESTROYNOTIFY, 0, exit_window, 0);
 	// Loop
