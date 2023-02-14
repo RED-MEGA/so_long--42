@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 01:01:25 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/14 22:35:38 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/14 22:45:46 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ char	**ft_input_manage(char *map_file)
 		full_map = ft_strjoin(full_map, str);
 	}
 	map = ft_split(full_map, '\n');
+	// free(full_map);
 	len = 0;
 	while (map[len])
 		len++;
