@@ -22,26 +22,26 @@ void	ft_error_str(void *status, int code)
 		return (perror("Error "), exit(code));
 }
 
-void	ft_open_image(t_image *img, t_mlx_win *mlx_x, int *width, int *height)
+void	ft_open_image(t_mlx_win *mlx_x, int *width, int *height)
 {
-	img->player.front = mlx_xpm_file_to_image(mlx_x->mlx, "texture/sprites/player/front.xpm", width, height);
-	ft_error_str(img->player.front, 1);
-	img->player.back = mlx_xpm_file_to_image(mlx_x->mlx, "texture/sprites/player/back.xpm", width, height);
-	ft_error_str(img->player.back, 1);
-	img->player.right = mlx_xpm_file_to_image(mlx_x->mlx, "texture/sprites/player/right.xpm", width, height);
-	ft_error_str(img->player.right, 1);
-	img->player.left = mlx_xpm_file_to_image(mlx_x->mlx, "texture/sprites/player/left.xpm", width, height);
-	ft_error_str(img->player.left, 1);
-	img->floor = mlx_xpm_file_to_image(mlx_x->mlx, "texture/sprites/floor.xpm", width, height);
-	ft_error_str(img->floor, 1);
-	img->wall = mlx_xpm_file_to_image(mlx_x->mlx, "texture/sprites/wall.xpm", width, height);
-	ft_error_str(img->wall, 1);
-	img->coin = mlx_xpm_file_to_image(mlx_x->mlx, "texture/sprites/coin.xpm", width, height);
-	ft_error_str(img->coin, 1);
-	img->exit = mlx_xpm_file_to_image(mlx_x->mlx, "texture/sprites/exit.xpm", width, height);
-	ft_error_str(img->exit, 1);
-	img->enemy = mlx_xpm_file_to_image(mlx_x->mlx, "texture/sprites/enemy.xpm", width, height);
-	ft_error_str(img->enemy, 1);
+	mlx_x->img.player.front = mlx_xpm_file_to_image(mlx_x->mlx, "texture/sprites/player/front.xpm", width, height);
+	ft_error_str(mlx_x->img.player.front, 1);
+	mlx_x->img.player.back = mlx_xpm_file_to_image(mlx_x->mlx, "texture/sprites/player/back.xpm", width, height);
+	ft_error_str(mlx_x->img.player.back, 1);
+	mlx_x->img.player.right = mlx_xpm_file_to_image(mlx_x->mlx, "texture/sprites/player/right.xpm", width, height);
+	ft_error_str(mlx_x->img.player.right, 1);
+	mlx_x->img.player.left = mlx_xpm_file_to_image(mlx_x->mlx, "texture/sprites/player/left.xpm", width, height);
+	ft_error_str(mlx_x->img.player.left, 1);
+	mlx_x->img.floor = mlx_xpm_file_to_image(mlx_x->mlx, "texture/sprites/floor.xpm", width, height);
+	ft_error_str(mlx_x->img.floor, 1);
+	mlx_x->img.wall = mlx_xpm_file_to_image(mlx_x->mlx, "texture/sprites/wall.xpm", width, height);
+	ft_error_str(mlx_x->img.wall, 1);
+	mlx_x->img.coin = mlx_xpm_file_to_image(mlx_x->mlx, "texture/sprites/coin.xpm", width, height);
+	ft_error_str(mlx_x->img.coin, 1);
+	mlx_x->img.exit = mlx_xpm_file_to_image(mlx_x->mlx, "texture/sprites/exit.xpm", width, height);
+	ft_error_str(mlx_x->img.exit, 1);
+	mlx_x->img.enemy = mlx_xpm_file_to_image(mlx_x->mlx, "texture/sprites/enemy.xpm", width, height);
+	ft_error_str(mlx_x->img.enemy, 1);
 }
 
 void	ft_put_to_screen(char **map, t_image *img, t_mlx_win *mlx_x)
@@ -155,7 +155,7 @@ int	main(int argc, char **argv)
 	// Start in mlX
 	mlx_x.mlx = mlx_init();
 	// Open Images
-	ft_open_image(&mlx_x.img, &mlx_x, &mlx_x.width, &mlx_x.height);
+	ft_open_image(&mlx_x, &mlx_x.width, &mlx_x.height);
 	// Open Window
 	mlx_x.mlx_win = mlx_new_window(mlx_x.mlx, (mlx_x.x * mlx_x.width), (mlx_x.y * mlx_x.height), "So_long REDMEGA-Edition");
 	// Display ...
