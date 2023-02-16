@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 01:01:27 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/16 23:31:58 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/16 23:35:07 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ char	**copy_map(char **map, int len)
 	i = -1;
 	while (map[++i])
 		new_map[i] = ft_strdup(map[i]);
+	new_map[i] = NULL;
 	return (new_map);
 }
 
