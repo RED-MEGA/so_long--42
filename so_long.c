@@ -22,124 +22,6 @@ void	ft_error_str(void *status, int code)
 		return (perror("Error "), exit(code));
 }
 
-void	ft_open_image(t_mlx_win *mlx_x, int *width, int *height)
-{
-	mlx_x->img.player.front = mlx_xpm_file_to_image(mlx_x->mlx, "texture/player/3-front.xpm", width, height);
-	ft_error_str(mlx_x->img.player.front, 1);
-	mlx_x->img.player.back = mlx_xpm_file_to_image(mlx_x->mlx, "texture/player/3-back.xpm", width, height);
-	ft_error_str(mlx_x->img.player.back, 1);
-	mlx_x->img.player.right = mlx_xpm_file_to_image(mlx_x->mlx, "texture/player/3-right.xpm", width, height);
-	ft_error_str(mlx_x->img.player.right, 1);
-	mlx_x->img.player.left = mlx_xpm_file_to_image(mlx_x->mlx, "texture/player/3-left.xpm", width, height);
-	ft_error_str(mlx_x->img.player.left, 1);
-	mlx_x->img.floor = mlx_xpm_file_to_image(mlx_x->mlx, "texture/floor.xpm", width, height);
-	ft_error_str(mlx_x->img.floor, 1);
-	mlx_x->img.wall = mlx_xpm_file_to_image(mlx_x->mlx, "texture/wall.xpm", width, height);
-	ft_error_str(mlx_x->img.wall, 1);
-	mlx_x->img.coin = mlx_xpm_file_to_image(mlx_x->mlx, "texture/coin.xpm", width, height);
-	ft_error_str(mlx_x->img.coin, 1);
-	mlx_x->img.exit = mlx_xpm_file_to_image(mlx_x->mlx, "texture/door/exit.xpm", width, height);
-	ft_error_str(mlx_x->img.exit, 1);
-	mlx_x->img.enemy = mlx_xpm_file_to_image(mlx_x->mlx, "texture/enemy_normal.xpm", width, height);
-	ft_error_str(mlx_x->img.enemy, 1);
-}
-
-void	ft_put_to_screen(char **map, t_image *img, t_mlx_win *mlx_x)
-{
-	void	*img_ch;
-	int		x;
-	int		y;
-
-	mlx_clear_window(mlx_x->mlx, mlx_x->mlx_win);
-	y = -1;
-	while (++y < mlx_x->y)
-	{
-		x = -1;
-		while (++x < mlx_x->x)
-		{
-			if (map[y][x] == '0')
-				img_ch = img->floor;
-			else if (map[y][x] == '1')
-				img_ch = img->wall;
-			else if (map[y][x] == 'C')
-				img_ch = img->coin;
-			else if (map[y][x] == 'E')
-				img_ch = img->exit;
-			else if (map[y][x] == 'E')
-				img_ch = img->exit;
-			else if (map[y][x] == 'P')
-				img_ch = img->player.front;
-			mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, img_ch, x * mlx_x->width, y * mlx_x->height);
-		}
-	}
-}
-
-int	apply_key(int keycode, t_mlx_win *mlx_x)
-{
-	t_loc	loc;
-
-	if (keycode == 53)
-		exit(0);
-	loc = fp(mlx_x->map, 'P', 'l');
-	if (keycode == 126 || keycode == 13)
-	{
-		if (mlx_x->map[loc.i - 1][loc.j] == '1')
-			return (-1);
-		if (mlx_x->map[loc.i - 1][loc.j] == 'E' && fp(mlx_x->map, 'C', 'l').i == FAIL)
-			exit(1);
-		else if (mlx_x->map[loc.i - 1][loc.j] == 'E')
-			return (-1);
-		mlx_x->map[loc.i - 1][loc.j] = 'P';
-		mlx_x->map[loc.i][loc.j] = '0';
-		mlx_x->moves += 1;
-	}
-	else if (keycode == 123 || keycode == 0)
-	{
-		if (mlx_x->map[loc.i][loc.j - 1] == '1')
-			return (-1);
-		if (mlx_x->map[loc.i][loc.j - 1] == 'E' && fp(mlx_x->map, 'C', 'l').i == FAIL)
-			exit(1);
-		else if (mlx_x->map[loc.i][loc.j - 1] == 'E')
-			return (-1);
-		mlx_x->map[loc.i][loc.j - 1] = 'P';
-		mlx_x->map[loc.i][loc.j] = '0';
-		mlx_x->moves += 1;
-	}
-	else if (keycode == 125 || keycode == 1)
-	{
-		if (mlx_x->map[loc.i + 1][loc.j] == '1')
-			return (-1);
-		if (mlx_x->map[loc.i + 1][loc.j] == 'E' && fp(mlx_x->map, 'C', 'l').i == FAIL)
-			exit(1);
-		else if (mlx_x->map[loc.i + 1][loc.j] == 'E')
-			return (-1);
-		mlx_x->map[loc.i + 1][loc.j] = 'P';
-		mlx_x->map[loc.i][loc.j] = '0';
-		mlx_x->moves += 1;
-	}
-	else if (keycode == 124 || keycode == 2)
-	{
-		if (mlx_x->map[loc.i][loc.j + 1] == '1')
-			return (-1);
-		if (mlx_x->map[loc.i][loc.j + 1] == 'E' && fp(mlx_x->map, 'C', 'l').i == FAIL)
-			exit(1);
-		else if (mlx_x->map[loc.i][loc.j + 1] == 'E')
-			return (-1);
-		mlx_x->map[loc.i][loc.j + 1] = 'P';
-		mlx_x->map[loc.i][loc.j] = '0';
-		mlx_x->moves += 1;
-	}
-	ft_put_to_screen(mlx_x->map, &mlx_x->img, mlx_x);
-	mlx_string_put(mlx_x->mlx, mlx_x->mlx_win, 32, 32, 0xFFFFFF, ft_itoa(mlx_x->moves));
-	return (0);
-}
-
-int	exit_window(void *param)
-{
-	(void)param;
-	exit(0);
-}
-
 int	main(int argc, char **argv)
 {
 	t_mlx_win	mlx_x;
@@ -155,7 +37,7 @@ int	main(int argc, char **argv)
 	// Start in mlX
 	mlx_x.mlx = mlx_init();
 	// Open Images
-	ft_open_image(&mlx_x, &mlx_x.width, &mlx_x.height);
+	ft_open_image(&mlx_x);
 	// Open Window
 	mlx_x.mlx_win = mlx_new_window(mlx_x.mlx, (mlx_x.x * mlx_x.width), (mlx_x.y * mlx_x.height), "So_long REDMEGA-Edition");
 	// Display ...
@@ -164,6 +46,7 @@ int	main(int argc, char **argv)
 	mlx_hook(mlx_x.mlx_win, KEYPRESS, 0, apply_key, &mlx_x);
 	mlx_hook(mlx_x.mlx_win, DESTROYNOTIFY, 0, exit_window, 0);
 	// Loop
+	// mlx_loop_hook(mlx_x.mlx, int (*f)(), );
 	mlx_string_put(mlx_x.mlx, mlx_x.mlx_win, 0, 0, 0x00FF0000, "Hoooooot game");
 	mlx_loop(mlx_x.mlx);
 }

@@ -6,7 +6,7 @@
 #    By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/08 23:26:08 by reben-ha          #+#    #+#              #
-#    Updated: 2023/02/12 17:07:39 by reben-ha         ###   ########.fr        #
+#    Updated: 2023/02/17 00:34:19 by reben-ha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,9 @@ LIB = ./libft/libft.a
 
 SRC = so_long.c \
 		mandatory/input_manage_part_one.c \
-		mandatory/input_manage_part_two.c
+		mandatory/input_manage_part_two.c \
+		mandatory/manage_window.c \
+		mandatory/open_image.c
 
 OBJ = $(SRC:.c=.o)
 
