@@ -48,5 +48,6 @@ int	main(int argc, char **argv)
 	mlx_hook(mlx_x.mlx_win, DESTROYNOTIFY, 0, exit_window, 0);
 	// Loop
 	mlx_loop_hook(mlx_x.mlx, midgard_hole, &mlx_x);
+	mlx_loop_hook(mlx_x.mlx, enemy_animated, &mlx_x);
 	mlx_loop(mlx_x.mlx);
 }
