@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 23:26:10 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/17 00:37:18 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/17 03:08:38 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,26 @@ typedef struct s_struct
 	int		j;
 }			t_loc;
 
+typedef struct s_frame
+{
+	void	*frame_1;
+	void	*frame_2;
+	void	*frame_3;
+	void	*frame_4;
+	void	*frame_5;
+	void	*frame_6;
+	void	*frame_7;
+	void	*frame_8;
+	void	*frame_9;
+	void	*frame_10;
+}			t_frame;
+
 typedef struct s_player
 {
-	void	*front;
-	void	*back;
-	void	*right;
-	void	*left;
+	t_frame	front;
+	t_frame	back;
+	t_frame	right;
+	t_frame	left;
 }			t_player;
 
 typedef struct s_image
@@ -58,7 +72,10 @@ typedef struct s_image
 	void		*wall;
 	void		*coin;
 	void		*exit;
+	void		*exit_2;
+	t_frame		exit_hole;
 	void		*enemy;
+	void		*enemy_angry;
 	t_player	player;
 }			t_image;
 
@@ -87,7 +104,7 @@ void	check_player(char **map, int i, int j);
 void	path_player(char **map, int i, int j);
 
 void	ft_open_image(t_mlx_win *mlx_x);
-void	ft_put_to_screen(char **map, t_image *img, t_mlx_win *mlx_x);
+void	ft_put_to_screen(t_mlx_win *mlx_x);
 int		apply_key(int keycode, t_mlx_win *mlx_x);
 int		exit_window(void *param);
 

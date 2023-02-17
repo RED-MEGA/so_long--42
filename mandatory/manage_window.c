@@ -6,13 +6,13 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 00:25:16 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/17 00:34:40 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/17 03:11:10 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	ft_put_to_screen(char **map, t_image *img, t_mlx_win *mlx_x)
+void	ft_put_to_screen(t_mlx_win *mlx_x)
 {
 	void	*img_ch;
 	int		x;
@@ -25,18 +25,16 @@ void	ft_put_to_screen(char **map, t_image *img, t_mlx_win *mlx_x)
 		x = -1;
 		while (++x < mlx_x->x)
 		{
-			if (map[y][x] == '0')
-				img_ch = img->floor;
-			else if (map[y][x] == '1')
-				img_ch = img->wall;
-			else if (map[y][x] == 'C')
-				img_ch = img->coin;
-			else if (map[y][x] == 'E')
-				img_ch = img->exit;
-			else if (map[y][x] == 'E')
-				img_ch = img->exit;
-			else if (map[y][x] == 'P')
-				img_ch = img->player.front;
+			if (mlx_x->map[y][x] == '0')
+				img_ch = mlx_x->img.floor;
+			else if (mlx_x->map[y][x] == '1')
+				img_ch = mlx_x->img.wall;
+			else if (mlx_x->map[y][x] == 'C')
+				img_ch = mlx_x->img.coin;
+			else if (mlx_x->map[y][x] == 'E')
+				img_ch = mlx_x->img.exit;
+			else if (mlx_x->map[y][x] == 'P')
+				img_ch = mlx_x->img.player.front.frame_3;
 			mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, img_ch, x * mlx_x->width, y * mlx_x->height);
 		}
 	}
@@ -97,7 +95,7 @@ int	apply_key(int keycode, t_mlx_win *mlx_x)
 		mlx_x->map[loc.i][loc.j] = '0';
 		mlx_x->moves += 1;
 	}
-	ft_put_to_screen(mlx_x->map, &mlx_x->img, mlx_x);
+	ft_put_to_screen(mlx_x);
 	mlx_string_put(mlx_x->mlx, mlx_x->mlx_win, 32, 32, 0xFFFFFF, ft_itoa(mlx_x->moves));
 	return (0);
 }

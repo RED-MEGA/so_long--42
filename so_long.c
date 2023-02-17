@@ -41,7 +41,7 @@ int	main(int argc, char **argv)
 	// Open Window
 	mlx_x.mlx_win = mlx_new_window(mlx_x.mlx, (mlx_x.x * mlx_x.width), (mlx_x.y * mlx_x.height), "So_long REDMEGA-Edition");
 	// Display ...
-	ft_put_to_screen(mlx_x.map, &mlx_x.img, &mlx_x);
+	ft_put_to_screen(&mlx_x);
 	// game start
 	mlx_hook(mlx_x.mlx_win, KEYPRESS, 0, apply_key, &mlx_x);
 	mlx_hook(mlx_x.mlx_win, DESTROYNOTIFY, 0, exit_window, 0);
