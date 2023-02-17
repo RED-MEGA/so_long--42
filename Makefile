@@ -6,7 +6,7 @@
 #    By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/08 23:26:08 by reben-ha          #+#    #+#              #
-#    Updated: 2023/02/17 00:34:19 by reben-ha         ###   ########.fr        #
+#    Updated: 2023/02/17 05:33:11 by reben-ha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRC = so_long.c \
 		mandatory/input_manage_part_one.c \
 		mandatory/input_manage_part_two.c \
 		mandatory/manage_window.c \
-		mandatory/open_image.c
+		mandatory/open_image.c \
+		bonus/bonus.c
 
 OBJ = $(SRC:.c=.o)
 

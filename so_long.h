@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 23:26:10 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/17 04:30:26 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/17 05:32:47 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include "./libft/libft.h"
 
 # define FAIL -1
-# define FPS 100
+# define FPS 10
 # define KEYPRESS 2
 # define DESTROYNOTIFY 17
 
@@ -110,5 +110,7 @@ int		apply_key(int keycode, t_mlx_win *mlx_x);
 int		exit_window(void *param);
 
 t_loc	fp(char **map, char c, int option);
+
+int		midgard_hole(t_mlx_win *mlx_x);
 
 #endif
