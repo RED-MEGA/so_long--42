@@ -47,7 +47,11 @@ int	main(int argc, char **argv)
 	mlx_hook(mlx_x.mlx_win, KEYPRESS, 0, apply_key, &mlx_x);
 	mlx_hook(mlx_x.mlx_win, DESTROYNOTIFY, 0, exit_window, 0);
 	// Loop
+	// if (fp(mlx_x.map, 'C', 'l').i == -1)
+	// 	open_door();
+	
+	
 	mlx_loop_hook(mlx_x.mlx, midgard_hole, &mlx_x);
-	// mlx_loop_hook(mlx_x.mlx, enemy_animated, &mlx_x);
+	mlx_loop_hook(mlx_x.mlx, enemy_animated, &mlx_x);
 	mlx_loop(mlx_x.mlx);
 }
