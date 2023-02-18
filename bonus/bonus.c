@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 05:32:04 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/17 20:33:20 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/18 21:58:53 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void ft_sleep(int time)
 	int	i;
 
 	i = 0;
-  	while (i < (time * 50000000))
+  	while (i < (time * 5000000))
 		i++;;
 }
 
@@ -104,41 +104,49 @@ int	enemy_animated(t_mlx_win *mlx_x)
 		return (0);
 	img_flo = mlx_x->img.floor;
 	img_enm = mlx_x->img.enemy;
-	if (mlx_x->map[loc.i + 1][loc.j] != '1')
+	// if (mlx_x->map[loc.i + 1][loc.j] != '1')
+	// {
+	// 	ft_sleep(5);
+	// 	mlx_x->map[loc.i][loc.j] = '0';
+	// 	mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, img_flo, loc.j * 100, loc.i * 100);
+	// 	mlx_x->map[loc.i + 1][loc.j] = 'T';
+	// 	mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, img_enm, loc.j * 100, (loc.i + 1) * 100);
+	// 	mlx_do_sync(mlx_x->mlx);
+	// }
+	// else if (mlx_x->map[loc.i - 1][loc.j] != '1')
+	// {
+	// 	ft_sleep(5);
+	// 	mlx_x->map[loc.i][loc.j] = '0';
+	// 	mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, img_flo, loc.j * 100, loc.i * 100);
+	// 	mlx_x->map[loc.i - 1][loc.j] = 'T';
+	// 	mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, img_enm, loc.j * 100, (loc.i - 1) * 100);
+	// 	mlx_do_sync(mlx_x->mlx);
+	// }
+	if (mlx_x->map[loc.i][loc.j + 1] != '1')
 	{
-		ft_sleep(5);
-		mlx_x->map[loc.i][loc.j] = '0';
-		mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, img_flo, loc.j * 100, loc.i * 100);
-		mlx_x->map[loc.i + 1][loc.j] = 'T';
-		mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, img_enm, loc.j * 100, (loc.i + 1) * 100);
-		// mlx_do_sync(mlx_x->mlx);
-	}
-	else if (mlx_x->map[loc.i - 1][loc.j] != '1')
-	{
-		ft_sleep(5);
-		mlx_x->map[loc.i][loc.j] = '0';
-		mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, img_flo, loc.j * 100, loc.i * 100);
-		mlx_x->map[loc.i - 1][loc.j] = 'T';
-		mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, img_enm, loc.j * 100, (loc.i - 1) * 100);
-		// mlx_do_sync(mlx_x->mlx);
-	}
-	else if (mlx_x->map[loc.i][loc.j + 1] != '1')
-	{
-		ft_sleep(5);
+		ft_sleep(1);
 		mlx_x->map[loc.i][loc.j] = '0';
 		mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, img_flo, loc.j * 100, loc.i * 100);
 		mlx_x->map[loc.i][loc.j + 1] = 'T';
 		mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, img_enm, (loc.j + 1) * 100, loc.i * 100);
-		// mlx_do_sync(mlx_x->mlx);
+		mlx_do_sync(mlx_x->mlx);
 	}
 	else if (mlx_x->map[loc.i][loc.j - 1] != '1')
 	{
-		ft_sleep(5);
+		ft_sleep(1);
 		mlx_x->map[loc.i][loc.j] = '0';
 		mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, img_flo, loc.j * 100, loc.i * 100);
 		mlx_x->map[loc.i][loc.j - 1] = 'T';
 		mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, img_enm, (loc.j - 1) * 100, loc.i * 100);
-		// mlx_do_sync(mlx_x->mlx);
+		mlx_do_sync(mlx_x->mlx);
 	}
+	return (0);
+}
+
+int	animation_sprite(t_mlx_win *mlx_x)
+{
+	if (fp(mlx_x->map, 'C', 'l').i == -1)
+		midgard_hole(mlx_x);
+	enemy_animated(mlx_x);
 	return (0);
 }

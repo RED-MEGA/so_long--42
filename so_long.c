@@ -41,7 +41,6 @@ int	main(int argc, char **argv)
 	// Open Window
 	mlx_x.mlx_win = mlx_new_window(mlx_x.mlx, (mlx_x.x * mlx_x.width), (mlx_x.y * mlx_x.height), "So_long REDMEGA-Edition");
 	// Display ...
-	dprintf(2, "%d = %d\n", mlx_x.width, mlx_x.height);
 	ft_put_to_screen(&mlx_x);
 	// game start
 	mlx_hook(mlx_x.mlx_win, KEYPRESS, 0, apply_key, &mlx_x);
@@ -51,7 +50,6 @@ int	main(int argc, char **argv)
 	// 	open_door();
 	
 	
-	mlx_loop_hook(mlx_x.mlx, midgard_hole, &mlx_x);
-	mlx_loop_hook(mlx_x.mlx, enemy_animated, &mlx_x);
+	mlx_loop_hook(mlx_x.mlx, animation_sprite, &mlx_x);
 	mlx_loop(mlx_x.mlx);
 }
