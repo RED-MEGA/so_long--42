@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 23:26:10 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/18 21:49:39 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/18 22:26:52 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,14 @@
 # define KEYPRESS 2
 # define DESTROYNOTIFY 17
 
-// 	Hook         KeyCode
-//
-// 	keyup    	   126
-// 	keyleft  	   123
-// 	keydown  	   125
-// 	keyright 	   124
-// 		W	 	    13
-// 		A	 		0
-// 		D	 		2
-// 		S	 		1
+# define UP_KEY		126
+# define DOWN_KEY	125
+# define LEFT_KEY	123
+# define RIGHT_KEY	124
+# define W_KEY		13
+# define S_KEY		1
+# define A_KEY		0
+# define D_KEY		2
 
 typedef struct s_struct
 {

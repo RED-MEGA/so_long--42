@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 00:25:16 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/18 22:15:15 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/18 22:40:51 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,60 +45,54 @@ void	ft_put_to_screen(t_mlx_win *mlx_x)
 	}
 }
 
+int	apply_key_do(t_mlx_win *mlx_x, int i, int j)
+{
+	if (mlx_x->map[i][j] == '1')
+		return (-1);
+	if (mlx_x->map[i][j] == 'E' && fp(mlx_x->map, 'C', 'l').i == FAIL)
+		exit(0);
+	else if (mlx_x->map[i][j] == 'E')
+		return (-1);
+	mlx_x->map[i][j] = 'P';
+	mlx_x->moves += 1;
+	return (0);
+}
+
 int	apply_key(int keycode, t_mlx_win *mlx_x)
 {
 	t_loc	loc;
+	int		status;
 
 	if (keycode == 53)
 		exit(0);
 	loc = fp(mlx_x->map, 'P', 'l');
-	if (keycode == 126 || keycode == 13)
+	if (keycode == UP_KEY || keycode == W_KEY)
 	{
-		if (mlx_x->map[loc.i - 1][loc.j] == '1')
+		status = apply_key_do(mlx_x, loc.i - 1, loc.j);
+		if (status == -1)
 			return (-1);
-		if (mlx_x->map[loc.i - 1][loc.j] == 'E' && fp(mlx_x->map, 'C', 'l').i == FAIL)
-			exit(1);
-		else if (mlx_x->map[loc.i - 1][loc.j] == 'E')
-			return (-1);
-		mlx_x->map[loc.i - 1][loc.j] = 'P';
 		mlx_x->map[loc.i][loc.j] = '0';
-		mlx_x->moves += 1;
 	}
-	else if (keycode == 123 || keycode == 0)
+	else if (keycode == LEFT_KEY || keycode == A_KEY)
 	{
-		if (mlx_x->map[loc.i][loc.j - 1] == '1')
+		status = apply_key_do(mlx_x, loc.i, loc.j - 1);
+		if (status == -1)
 			return (-1);
-		if (mlx_x->map[loc.i][loc.j - 1] == 'E' && fp(mlx_x->map, 'C', 'l').i == FAIL)
-			exit(1);
-		else if (mlx_x->map[loc.i][loc.j - 1] == 'E')
-			return (-1);
-		mlx_x->map[loc.i][loc.j - 1] = 'P';
 		mlx_x->map[loc.i][loc.j] = '0';
-		mlx_x->moves += 1;
 	}
-	else if (keycode == 125 || keycode == 1)
+	else if (keycode == DOWN_KEY || keycode == S_KEY)
 	{
-		if (mlx_x->map[loc.i + 1][loc.j] == '1')
+		status = apply_key_do(mlx_x, loc.i + 1, loc.j);
+		if (status == -1)
 			return (-1);
-		if (mlx_x->map[loc.i + 1][loc.j] == 'E' && fp(mlx_x->map, 'C', 'l').i == FAIL)
-			exit(1);
-		else if (mlx_x->map[loc.i + 1][loc.j] == 'E')
-			return (-1);
-		mlx_x->map[loc.i + 1][loc.j] = 'P';
 		mlx_x->map[loc.i][loc.j] = '0';
-		mlx_x->moves += 1;
 	}
-	else if (keycode == 124 || keycode == 2)
+	else if (keycode == RIGHT_KEY || keycode == D_KEY)
 	{
-		if (mlx_x->map[loc.i][loc.j + 1] == '1')
+		status = apply_key_do(mlx_x, loc.i, loc.j + 1);
+		if (status == -1)
 			return (-1);
-		if (mlx_x->map[loc.i][loc.j + 1] == 'E' && fp(mlx_x->map, 'C', 'l').i == FAIL)
-			exit(1);
-		else if (mlx_x->map[loc.i][loc.j + 1] == 'E')
-			return (-1);
-		mlx_x->map[loc.i][loc.j + 1] = 'P';
 		mlx_x->map[loc.i][loc.j] = '0';
-		mlx_x->moves += 1;
 	}
 	ft_put_to_screen(mlx_x);
 	mlx_string_put(mlx_x->mlx, mlx_x->mlx_win, 32, 32, 0xFFFFFF, ft_itoa(mlx_x->moves));
