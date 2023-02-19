@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 05:32:04 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/19 01:51:35 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/19 01:54:58 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	midgard_hole(t_mlx_win *mlx_x)
 	t_loc		loc;
 	static int	fps;
 
-	dprintf(2, "%d\n", fps);
 	if (fps == 0)
 		fps = 1;
 	loc = fp(mlx_x->map, 'E', 'l');
@@ -92,8 +91,11 @@ int	midgard_hole(t_mlx_win *mlx_x)
 	}
 	int redred = ft_sleep(10, 0);
 	if (redred >= ((MAX_TIME) * fps))
+	{
 		fps++;
-	dprintf(2, "%d >= %d === %d\n", redred, (MAX_TIME) * fps , fps);
+		dprintf(2, "ha %d\n", fps);
+	}
+	// dprintf(2, "%d >= %d === %d\n", redred, (MAX_TIME) * fps , fps);
 	if (fps > FPS)
 		fps = 1;
 	return (0);
