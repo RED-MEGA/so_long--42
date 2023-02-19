@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 00:25:16 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/18 22:58:07 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/19 00:29:12 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	apply_key(int keycode, t_mlx_win *mlx_x)
 	t_loc	loc;
 	int		status;
 
-	dprintf(2, "%d\n", keycode);
+	// dprintf(2, "%d\n", keycode);
 	if (keycode == 53)
 		exit(0);
 	loc = fp(mlx_x->map, 'P', 'l');

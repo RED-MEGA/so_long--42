@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 23:26:10 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/18 22:26:52 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/19 00:45:19 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <mlx.h>
 # include "./libft/libft.h"
 
+# define MAX_TIME 5000000
 # define FAIL -1
 # define FPS 10
 # define KEYPRESS 2

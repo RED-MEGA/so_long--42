@@ -49,7 +49,6 @@ int	main(int argc, char **argv)
 	// if (fp(mlx_x.map, 'C', 'l').i == -1)
 	// 	open_door();
 	
-	
 	mlx_loop_hook(mlx_x.mlx, animation_sprite, &mlx_x);
 	mlx_loop(mlx_x.mlx);
 }
