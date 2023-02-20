@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 00:25:16 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/19 00:29:12 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/20 10:53:47 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	ft_put_to_screen(t_mlx_win *mlx_x)
 
 	mlx_clear_window(mlx_x->mlx, mlx_x->mlx_win);
 	y = -1;
-	img_ch = NULL;
 	while (++y < mlx_x->y)
 	{
 		x = -1;

@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 05:32:04 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/20 10:41:34 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/20 11:08:47 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,12 @@ int	midgard_hole(t_mlx_win *mlx_x)
 	t_loc		loc;
 
 	loc = fp(mlx_x->map, 'E', 'l');
-	if (mlx_x->time <= 3)
+	if (mlx_x->time <= 14 && fp(mlx_x->map, 'C', 'n').i == 1)
+	{
+		mlx_do_sync(mlx_x->mlx);
+		mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, mlx_x->img.exit_2, loc.j * 100, loc.i * 100);
+	}
+	else if (mlx_x->time <= 2)
 	{
 		mlx_do_sync(mlx_x->mlx);
 		mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, mlx_x->img.exit_hole.frame_1, loc.j * 100, loc.i * 100);
@@ -116,10 +121,9 @@ int	animation_sprite(t_mlx_win *mlx_x)
 {
 	t_loc		loc;
 
-	if (fp(mlx_x->map, 'C', 'l').i == -1)
-	{
+	loc = fp(mlx_x->map, 'C', 'n');
+	if (loc.i == -1 || loc.i == 1)
 		midgard_hole(mlx_x);
-	}
 	enemy_animated(mlx_x);
 	return (0);
 }

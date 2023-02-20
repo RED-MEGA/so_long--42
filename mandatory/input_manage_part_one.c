@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 01:01:25 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/17 05:28:30 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/20 11:02:10 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_loc	fp(char **map, char c, int option)
 			}
 		}
 	}
-	if (option == 'n' || count > 0)
+	if (option == 'n' && count > 0)
 	{
 		loc.i = count;
 		return (loc);
