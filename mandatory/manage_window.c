@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 00:25:16 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/20 14:06:47 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/20 14:41:39 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_put_to_screen(t_mlx_win *mlx_x)
 {
+	static int	first;
 	void	*img_ch;
 	int		x;
 	int		y;
@@ -35,10 +36,10 @@ void	ft_put_to_screen(t_mlx_win *mlx_x)
 				img_ch = mlx_x->img.player.front.frame_3;
 			else if (mlx_x->map[y][x] == 'T')
 				img_ch = mlx_x->img.enemy;
-			else if (mlx_x->map[y][x] == 'E' && fp(mlx_x->map, 'C', 'l').i != -1)
+			else if (mlx_x->map[y][x] == 'E' && fp(mlx_x->map, 'C', 'n').i > 1)
 				img_ch = mlx_x->img.exit;
 			else if (mlx_x->map[y][x] == 'E')
-				img_ch = mlx_x->img.exit_hole.frame_1;
+				continue ;
 			mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, img_ch, x * mlx_x->width, y * mlx_x->height);
 		}
 	}
