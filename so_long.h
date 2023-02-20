@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 23:26:10 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/20 11:14:54 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/20 11:17:48 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ typedef struct s_mlx_win
 	int		width;
 	int		height;
 	int		moves;
-	int		time;
+	int		time_midgard;
+	int		time_enemy;
 }			t_mlx_win;
 
 void	ft_error(int status, int code);

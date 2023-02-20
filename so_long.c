@@ -30,7 +30,8 @@ int	main(int argc, char **argv)
 		return (ft_printf(2, "Error : Invalid argument\n"), 1);
 	mlx_x.map = ft_input_manage(argv[1]);
 	mlx_x.moves = 0;
-	mlx_x.time = 0;
+	mlx_x.time_enemy = 0;
+	mlx_x.time_midgard = 0;
 	mlx_x.y = 0;
 	mlx_x.x = ft_strlen(mlx_x.map[0]);
 	while (mlx_x.map[mlx_x.y])
