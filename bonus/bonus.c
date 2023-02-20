@@ -6,13 +6,13 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 05:32:04 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/20 11:08:47 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/20 11:14:39 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	midgard_hole(t_mlx_win *mlx_x)
+void	midgard_hole(t_mlx_win *mlx_x)
 {
 	t_loc		loc;
 
@@ -75,10 +75,9 @@ int	midgard_hole(t_mlx_win *mlx_x)
 			mlx_x->time = 0;
 	}
 	mlx_x->time++;
-	return (0);
 }
 
-int	enemy_animated(t_mlx_win *mlx_x)
+void	enemy_animated(t_mlx_win *mlx_x)
 {
 	t_loc		loc;
 	void		*img_enm;
@@ -87,7 +86,7 @@ int	enemy_animated(t_mlx_win *mlx_x)
 
 	loc = fp(mlx_x->map, 'T', 'l');
 	if (loc.i == -1)
-		return (0);
+		return ;
 	img_flo = mlx_x->img.floor;
 	img_enm = mlx_x->img.enemy;
 	if (mlx_x->map[loc.i][loc.j + 1] != '1' && i == 0)
@@ -114,7 +113,6 @@ int	enemy_animated(t_mlx_win *mlx_x)
 		if (mlx_x->map[loc.i][loc.j - 2] == '1')
 			i = 0;
 	}
-	return (0);
 }
 
 int	animation_sprite(t_mlx_win *mlx_x)

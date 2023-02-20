@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 23:26:10 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/20 10:47:42 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/20 11:14:54 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 
 # define MAX_TIME 5000000
 # define FAIL -1
-# define FPS 10
 # define KEYPRESS 2
 # define DESTROYNOTIFY 17
 
@@ -112,7 +111,7 @@ int		exit_window(void *param);
 t_loc	fp(char **map, char c, int option);
 
 int		animation_sprite(t_mlx_win *mlx_x);
-int		midgard_hole(t_mlx_win *mlx_x);
-int		enemy_animated(t_mlx_win *mlx_x);
+void	midgard_hole(t_mlx_win *mlx_x);
+void	enemy_animated(t_mlx_win *mlx_x);
 
 #endif
