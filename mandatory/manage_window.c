@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 00:25:16 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/20 22:24:46 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/20 22:25:57 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	apply_key_do(t_mlx_win *mlx_x, int i, int j)
 	if ((mlx_x->map[i][j] == 'E' && fp(mlx_x->map, 'C', 'l').i == FAIL))
 		exit(0);
 	if (mlx_x->map[i][j] == 'T')
-		return (ft_printf(1, "\033[0;31mGAME OVER\n"), exit(0), 1);
+		return (ft_printf(1, "\033[0;32mGAME OVER\n"), exit(0), 1);
 	else if (mlx_x->map[i][j] == 'E')
 		return (-1);
 	mlx_x->map[i][j] = 'P';
