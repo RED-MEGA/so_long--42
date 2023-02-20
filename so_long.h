@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 23:26:10 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/20 14:07:07 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/20 17:33:42 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_frame
 
 typedef struct s_player
 {
+	t_frame	main;
 	t_frame	front;
 	t_frame	back;
 	t_frame	right;
@@ -108,6 +109,7 @@ void	path_player(char **map, int i, int j);
 void	ft_open_image(t_mlx_win *mlx_x);
 void	ft_put_to_screen(t_mlx_win *mlx_x);
 int		apply_key(int keycode, t_mlx_win *mlx_x);
+void	ft_select_img(t_mlx_win *mlx_x, char *option);
 int		exit_window(void *param);
 
 t_loc	fp(char **map, char c, int option);

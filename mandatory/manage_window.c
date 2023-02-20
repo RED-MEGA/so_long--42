@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 00:25:16 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/20 14:41:39 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/20 18:34:16 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_put_to_screen(t_mlx_win *mlx_x)
 			else if (mlx_x->map[y][x] == 'C')
 				img_ch = mlx_x->img.coin;
 			else if (mlx_x->map[y][x] == 'P')
-				img_ch = mlx_x->img.player.front.frame_3;
+				img_ch = mlx_x->img.player.main.frame_3;
 			else if (mlx_x->map[y][x] == 'T')
 				img_ch = mlx_x->img.enemy;
 			else if (mlx_x->map[y][x] == 'E' && fp(mlx_x->map, 'C', 'n').i > 1)
@@ -64,7 +64,6 @@ int	apply_key(int keycode, t_mlx_win *mlx_x)
 	t_loc	loc;
 	int		status;
 
-	// dprintf(2, "%d\n", keycode);
 	if (keycode == 53)
 		exit(0);
 	loc = fp(mlx_x->map, 'P', 'l');
@@ -74,6 +73,7 @@ int	apply_key(int keycode, t_mlx_win *mlx_x)
 		if (status == -1)
 			return (-1);
 		mlx_x->map[loc.i][loc.j] = '0';
+		ft_select_img(mlx_x, "back");
 	}
 	else if (keycode == LEFT_KEY || keycode == A_KEY)
 	{
@@ -81,6 +81,7 @@ int	apply_key(int keycode, t_mlx_win *mlx_x)
 		if (status == -1)
 			return (-1);
 		mlx_x->map[loc.i][loc.j] = '0';
+		ft_select_img(mlx_x, "left");
 	}
 	else if (keycode == DOWN_KEY || keycode == S_KEY)
 	{
@@ -88,6 +89,7 @@ int	apply_key(int keycode, t_mlx_win *mlx_x)
 		if (status == -1)
 			return (-1);
 		mlx_x->map[loc.i][loc.j] = '0';
+		ft_select_img(mlx_x, "front");
 	}
 	else if (keycode == RIGHT_KEY || keycode == D_KEY)
 	{
@@ -95,6 +97,7 @@ int	apply_key(int keycode, t_mlx_win *mlx_x)
 		if (status == -1)
 			return (-1);
 		mlx_x->map[loc.i][loc.j] = '0';
+		ft_select_img(mlx_x, "right");
 	}
 	ft_put_to_screen(mlx_x);
 	mlx_string_put(mlx_x->mlx, mlx_x->mlx_win, 32, 32, 0xFFFFFF, ft_itoa(mlx_x->moves));

@@ -22,6 +22,36 @@ void	ft_error_str(void *status, int code)
 		return (perror("Error "), exit(code));
 }
 
+void	ft_select_img(t_mlx_win *mlx_x, char *option)
+{
+	if (ft_strncmp(option, "front", 5) == 0)
+	{
+		mlx_x->img.player.main.frame_3 = mlx_x->img.player.front.frame_3;
+		mlx_x->img.player.main.frame_2 = mlx_x->img.player.front.frame_2;
+		mlx_x->img.player.main.frame_1 = mlx_x->img.player.front.frame_1;
+	}
+	else if (ft_strncmp(option, "back", 4) == 0)
+	{
+		mlx_x->img.player.main.frame_3 = mlx_x->img.player.back.frame_3;
+		mlx_x->img.player.main.frame_2 = mlx_x->img.player.back.frame_2;
+		mlx_x->img.player.main.frame_1 = mlx_x->img.player.back.frame_1;
+	}
+	else if (ft_strncmp(option, "left", 4) == 0)
+	{
+		mlx_x->img.player.main.frame_3 = mlx_x->img.player.left.frame_3;
+		mlx_x->img.player.main.frame_2 = mlx_x->img.player.left.frame_2;
+		mlx_x->img.player.main.frame_1 = mlx_x->img.player.left.frame_1;
+	}
+	else if (ft_strncmp(option, "right", 5) == 0)
+	{
+		mlx_x->img.player.main.frame_3 = mlx_x->img.player.right.frame_3;
+		mlx_x->img.player.main.frame_2 = mlx_x->img.player.right.frame_2;
+		mlx_x->img.player.main.frame_1 = mlx_x->img.player.right.frame_1;
+	}
+	else
+		return ;
+}
+
 int	main(int argc, char **argv)
 {
 	t_mlx_win	mlx_x;
@@ -44,10 +74,10 @@ int	main(int argc, char **argv)
 	// Open Window
 	mlx_x.mlx_win = mlx_new_window(mlx_x.mlx, (mlx_x.x * mlx_x.width), (mlx_x.y * mlx_x.height), "So_long REDMEGA-Edition");
 	// Display ...
+	mlx_x.img.player.main.frame_3 = mlx_x.img.player.back.frame_3;
+	mlx_x.img.player.main.frame_2 = mlx_x.img.player.back.frame_2;
+	mlx_x.img.player.main.frame_1 = mlx_x.img.player.back.frame_1;
 	ft_put_to_screen(&mlx_x);
-
-
-
 
 	// game start
 	mlx_hook(mlx_x.mlx_win, KEYPRESS, 0, apply_key, &mlx_x);
