@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 05:32:04 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/20 14:17:39 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/20 21:33:44 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,8 @@ void	enemy_animated(t_mlx_win *mlx_x)
 		mlx_x->map[loc.i][loc.j + 1] = 'T';
 		mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, img_enm, (loc.j + 1) * 100, loc.i * 100);
 		if (mlx_x->map[loc.i][loc.j + 2] == '1')
-				i = 1;
-		}
+			i = 1;
+	}
 	else if (mlx_x->map[loc.i][loc.j - 1] != '1' && i == 1)
 	{
 		if (mlx_x->map[loc.i][loc.j - 1] == 'P')
