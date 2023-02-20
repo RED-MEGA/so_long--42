@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 00:25:16 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/20 18:34:16 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/20 21:18:33 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_put_to_screen(t_mlx_win *mlx_x)
 			else if (mlx_x->map[y][x] == 'C')
 				img_ch = mlx_x->img.coin;
 			else if (mlx_x->map[y][x] == 'P')
-				img_ch = mlx_x->img.player.main.frame_3;
+				img_ch = mlx_x->img.player.main;
 			else if (mlx_x->map[y][x] == 'T')
 				img_ch = mlx_x->img.enemy;
 			else if (mlx_x->map[y][x] == 'E' && fp(mlx_x->map, 'C', 'n').i > 1)

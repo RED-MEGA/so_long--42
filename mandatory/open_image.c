@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 00:26:07 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/17 02:56:11 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/20 21:25:36 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,14 @@
 
 static void	open_image_player(t_mlx_win *mlx_x)
 {
-	mlx_x->img.player.front.frame_1 = mlx_xpm_file_to_image(mlx_x->mlx, "texture/player/1-front.xpm", &(mlx_x->width), &(mlx_x->height));
-	ft_error_str(mlx_x->img.player.front.frame_1, 1);
-	mlx_x->img.player.front.frame_2 = mlx_xpm_file_to_image(mlx_x->mlx, "texture/player/2-front.xpm", &(mlx_x->width), &(mlx_x->height));
-	ft_error_str(mlx_x->img.player.front.frame_2, 1);
-	mlx_x->img.player.front.frame_3 = mlx_xpm_file_to_image(mlx_x->mlx, "texture/player/3-front.xpm", &(mlx_x->width), &(mlx_x->height));
-	ft_error_str(mlx_x->img.player.front.frame_3, 1);
-
-	mlx_x->img.player.back.frame_1 = mlx_xpm_file_to_image(mlx_x->mlx, "texture/player/1-back.xpm", &(mlx_x->width), &(mlx_x->height));
-	ft_error_str(mlx_x->img.player.back.frame_1, 1);
-	mlx_x->img.player.back.frame_2 = mlx_xpm_file_to_image(mlx_x->mlx, "texture/player/2-back.xpm", &(mlx_x->width), &(mlx_x->height));
-	ft_error_str(mlx_x->img.player.back.frame_2, 1);
-	mlx_x->img.player.back.frame_3 = mlx_xpm_file_to_image(mlx_x->mlx, "texture/player/3-back.xpm", &(mlx_x->width), &(mlx_x->height));
-	ft_error_str(mlx_x->img.player.back.frame_3, 1);
-
-	mlx_x->img.player.left.frame_1 = mlx_xpm_file_to_image(mlx_x->mlx, "texture/player/1-left.xpm", &(mlx_x->width), &(mlx_x->height));
-	ft_error_str(mlx_x->img.player.left.frame_1, 1);
-	mlx_x->img.player.left.frame_2 = mlx_xpm_file_to_image(mlx_x->mlx, "texture/player/2-left.xpm", &(mlx_x->width), &(mlx_x->height));
-	ft_error_str(mlx_x->img.player.left.frame_2, 1);
-	mlx_x->img.player.left.frame_3 = mlx_xpm_file_to_image(mlx_x->mlx, "texture/player/3-left.xpm", &(mlx_x->width), &(mlx_x->height));
-	ft_error_str(mlx_x->img.player.left.frame_3, 1);
-
-	mlx_x->img.player.right.frame_1 = mlx_xpm_file_to_image(mlx_x->mlx, "texture/player/1-right.xpm", &(mlx_x->width), &(mlx_x->height));
-	ft_error_str(mlx_x->img.player.right.frame_1, 1);
-	mlx_x->img.player.right.frame_2 = mlx_xpm_file_to_image(mlx_x->mlx, "texture/player/2-right.xpm", &(mlx_x->width), &(mlx_x->height));
-	ft_error_str(mlx_x->img.player.right.frame_2, 1);
-	mlx_x->img.player.right.frame_3 = mlx_xpm_file_to_image(mlx_x->mlx, "texture/player/3-right.xpm", &(mlx_x->width), &(mlx_x->height));
-	ft_error_str(mlx_x->img.player.right.frame_3, 1);
-
+	mlx_x->img.player.front = mlx_xpm_file_to_image(mlx_x->mlx, "texture/player/3-front.xpm", &(mlx_x->width), &(mlx_x->height));
+	ft_error_str(mlx_x->img.player.front, 1);
+	mlx_x->img.player.back = mlx_xpm_file_to_image(mlx_x->mlx, "texture/player/3-back.xpm", &(mlx_x->width), &(mlx_x->height));
+	ft_error_str(mlx_x->img.player.back, 1);
+	mlx_x->img.player.left = mlx_xpm_file_to_image(mlx_x->mlx, "texture/player/3-left.xpm", &(mlx_x->width), &(mlx_x->height));
+	ft_error_str(mlx_x->img.player.left, 1);
+	mlx_x->img.player.right = mlx_xpm_file_to_image(mlx_x->mlx, "texture/player/3-right.xpm", &(mlx_x->width), &(mlx_x->height));
+	ft_error_str(mlx_x->img.player.right, 1);
 }
 
 static void	open_image_exit(t_mlx_win *mlx_x)
@@ -75,9 +55,7 @@ static void	open_image_exit(t_mlx_win *mlx_x)
 void	ft_open_image(t_mlx_win *mlx_x)
 {
 	open_image_player(mlx_x);
-
 	open_image_exit(mlx_x);
-
 	mlx_x->img.floor = mlx_xpm_file_to_image(mlx_x->mlx, "texture/floor.xpm", &(mlx_x->width), &(mlx_x->height));
 	ft_error_str(mlx_x->img.floor, 1);
 	mlx_x->img.wall = mlx_xpm_file_to_image(mlx_x->mlx, "texture/wall.xpm", &(mlx_x->width), &(mlx_x->height));
