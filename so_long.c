@@ -28,6 +28,7 @@ int	main(int argc, char **argv)
 
 	if (argc <= 1)
 		return (ft_printf(2, "Error : Invalid argument\n"), 1);
+	mlx_x.frame = 2500;
 	mlx_x.map = ft_input_manage(argv[1]);
 	mlx_x.moves = 0;
 	mlx_x.time_enemy = 0;
@@ -44,6 +45,10 @@ int	main(int argc, char **argv)
 	mlx_x.mlx_win = mlx_new_window(mlx_x.mlx, (mlx_x.x * mlx_x.width), (mlx_x.y * mlx_x.height), "So_long REDMEGA-Edition");
 	// Display ...
 	ft_put_to_screen(&mlx_x);
+
+
+
+
 	// game start
 	mlx_hook(mlx_x.mlx_win, KEYPRESS, 0, apply_key, &mlx_x);
 	mlx_hook(mlx_x.mlx_win, DESTROYNOTIFY, 0, exit_window, 0);
