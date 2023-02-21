@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 01:01:25 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/21 20:34:50 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/21 22:58:05 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,20 +69,17 @@ void	check_ex_nb(char **map)
 	}
 }
 
-char	**ft_input_manage(char *map_file)
+char	*ft_read(char *map_file)
 {
 	int		fd;
-	int		len;
 	char	*str;
+	int		normal_len;
 	char	*full_map;
-	char	**map;
 
-	if (ft_strlen(map_file) < 5 || ft_strncmp(ft_strrchr(map_file, '.'), ".ber\0", 5) != 0)
-		return (ft_printf(2, "Error : Invalid argument\n"), exit(1), NULL);
 	fd = open(map_file, O_RDONLY);
 	ft_error(fd, 1);
-	full_map = NULL;
 	str = NULL;
+	full_map = NULL;
 	while (1)
 	{
 		free(str);
@@ -91,6 +88,20 @@ char	**ft_input_manage(char *map_file)
 			break ;
 		full_map = ft_strjoin(full_map, str);
 	}
+	return (full_map);
+}
+
+char	**ft_input_manage(char *map_file)
+{
+	int		len;
+	char	*full_map;
+	char	**map;
+
+	if (ft_strlen(map_file) < 5
+		|| ft_strncmp(ft_strrchr(map_file, '.'), ".ber\0", 5) != 0)
+		return (ft_printf(2, "Error : Invalid argument\n"), exit(1), NULL);
+
+	full_map = ft_read(map_file);
 	map = ft_split(full_map, '\n');
 	free(full_map);
 	len = 0;
