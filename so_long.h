@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 23:26:10 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/20 21:15:47 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/21 20:14:06 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ typedef struct s_mlx_win
 void	ft_error(int status, int code);
 void	ft_error_str(void *status, int code);
 void	ft_free(char **str);
+void	ft_destroy(t_mlx_win *mlx_x);
 
 char	**ft_input_manage(char *map_file);
 void	check_ex_nb(char **map);
@@ -110,7 +111,7 @@ void	ft_open_image(t_mlx_win *mlx_x);
 void	ft_put_to_screen(t_mlx_win *mlx_x);
 int		apply_key(int keycode, t_mlx_win *mlx_x);
 void	ft_select_img(t_mlx_win *mlx_x, char *option);
-int		exit_window(void *param);
+int		exit_window(t_mlx_win *mlx_x);
 
 t_loc	fp(char **map, char c, int option);
 

@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 01:01:25 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/20 11:02:10 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/21 20:34:50 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,11 @@ void	check_ex_nb(char **map)
 	int	i;
 	int	j;
 
-	if (fp(map, 'P', 'n').i != 1 || fp(map, 'E', 'n').i != 1 || (fp(map, '0', 'n').i < 1)
-		|| (fp(map, '1', 'n').i < 1) || fp(map, 'C', 'n').i < 1)
+	if (fp(map, 'P', 'n').i != 1
+		|| fp(map, 'E', 'n').i != 1
+		|| fp(map, '0', 'n').i < 1
+		|| fp(map, '1', 'n').i < 1
+		|| fp(map, 'C', 'n').i < 1)
 		return (ft_printf(2, "Error : Invalid Character\n"), exit(1));
 	i = -1;
 	while (map[++i])
@@ -55,8 +58,12 @@ void	check_ex_nb(char **map)
 		j = -1;
 		while (map[i][++j])
 		{
-			if (!(map[i][j] == '0') && !(map[i][j] == '1') && !(map[i][j] == 'C')
-					&& !(map[i][j] == 'P') && !(map[i][j] == 'E') && !(map[i][j] == 'T'))
+			if (!(map[i][j] == '0')
+					&& !(map[i][j] == '1')
+					&& !(map[i][j] == 'C')
+					&& !(map[i][j] == 'P')
+					&& !(map[i][j] == 'E')
+					&& !(map[i][j] == 'T'))
 				return (ft_printf(2, "Error : Invalid Character\n"), exit(1));
 		}
 	}

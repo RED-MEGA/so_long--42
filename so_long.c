@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 20:12:19 by reben-ha          #+#    #+#             */
+/*   Updated: 2023/02/21 20:17:53 by reben-ha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	ft_free(char **str)
@@ -81,13 +93,14 @@ int	main(int argc, char **argv)
 	// Open Images
 	ft_open_image(&mlx_x);
 	// Open Window
-	mlx_x.mlx_win = mlx_new_window(mlx_x.mlx, (mlx_x.x * mlx_x.width), (mlx_x.y * mlx_x.height), "So_long REDMEGA-Edition");
+	mlx_x.mlx_win = mlx_new_window(mlx_x.mlx, (mlx_x.x * mlx_x.width),
+			(mlx_x.y * mlx_x.height), "So_long REDMEGA-Edition");
 	// Display ...
-	mlx_x.img.player.main = mlx_x.img.player.front;
+	ft_select_img(&mlx_x, "front");
 	ft_put_to_screen(&mlx_x);
 	// game start
 	mlx_hook(mlx_x.mlx_win, KEYPRESS, 0, apply_key, &mlx_x);
-	mlx_hook(mlx_x.mlx_win, DESTROYNOTIFY, 0, exit_window, 0);
+	mlx_hook(mlx_x.mlx_win, DESTROYNOTIFY, 0, exit_window, &mlx_x);
 	// Loop
 	mlx_loop_hook(mlx_x.mlx, animation_sprite, &mlx_x);
 	mlx_loop(mlx_x.mlx);
