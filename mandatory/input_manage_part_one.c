@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 01:01:25 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/21 22:58:05 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/21 23:52:15 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,15 +78,17 @@ char	*ft_read(char *map_file)
 
 	fd = open(map_file, O_RDONLY);
 	ft_error(fd, 1);
-	str = NULL;
 	full_map = NULL;
-	while (1)
+	str = get_next_line(fd);
+	if (!str)
+		ft_printf(2, "Error : Empty File\n");
+	while (str)
 	{
+		if (str[0] == '\n')
+			return (ft_printf(2, "Error : Empty line\n"), exit(1), NULL);
+		full_map = ft_strjoin(full_map, str);
 		free(str);
 		str = get_next_line(fd);
-		if (!str)
-			break ;
-		full_map = ft_strjoin(full_map, str);
 	}
 	return (full_map);
 }
@@ -100,7 +102,6 @@ char	**ft_input_manage(char *map_file)
 	if (ft_strlen(map_file) < 5
 		|| ft_strncmp(ft_strrchr(map_file, '.'), ".ber\0", 5) != 0)
 		return (ft_printf(2, "Error : Invalid argument\n"), exit(1), NULL);
-
 	full_map = ft_read(map_file);
 	map = ft_split(full_map, '\n');
 	free(full_map);
