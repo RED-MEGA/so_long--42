@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 00:25:16 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/21 20:43:07 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/21 21:54:15 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ void	ft_put_to_screen(t_mlx_win *mlx_x)
 				x * mlx_x->width, y * mlx_x->height);
 		}
 	}
+	mlx_string_put(mlx_x->mlx, mlx_x->mlx_win, 32, 32,
+		0xFFFFFF,
+		ft_itoa(mlx_x->moves));
 }
 
 int	apply_key_do(t_mlx_win *mlx_x, int i, int j)
@@ -68,6 +71,13 @@ int	apply_key_do(t_mlx_win *mlx_x, int i, int j)
 	return (0);
 }
 
+void	short_apply_key(t_mlx_win *mlx_x, t_loc loc, char *option)
+{
+	mlx_x->map[loc.i][loc.j] = '0';
+	ft_select_img(mlx_x, option);
+	ft_put_to_screen(mlx_x);
+}
+
 int	apply_key(int keycode, t_mlx_win *mlx_x)
 {
 	t_loc	loc;
@@ -81,51 +91,29 @@ int	apply_key(int keycode, t_mlx_win *mlx_x)
 		status = apply_key_do(mlx_x, loc.i - 1, loc.j);
 		if (status == -1)
 			return (-1);
-		mlx_x->map[loc.i][loc.j] = '0';
-		ft_select_img(mlx_x, "back");
-		// if (status == -1)
-		// 	return (-1);
-		// mlx_x->map[loc.i][loc.j] = '0';
-		// ft_select_img(mlx_x, "back");
+		short_apply_key(mlx_x, loc, "back");
 	}
 	else if (keycode == LEFT_KEY || keycode == A_KEY)
 	{
 		status = apply_key_do(mlx_x, loc.i, loc.j - 1);
 		if (status == -1)
 			return (-1);
-		mlx_x->map[loc.i][loc.j] = '0';
-		ft_select_img(mlx_x, "left");
-		// if (status == -1)
-		// 	return (-1);
-		// mlx_x->map[loc.i][loc.j] = '0';
-		// ft_select_img(mlx_x, "left");
+		short_apply_key(mlx_x, loc, "left");
 	}
 	else if (keycode == DOWN_KEY || keycode == S_KEY)
 	{
 		status = apply_key_do(mlx_x, loc.i + 1, loc.j);
 		if (status == -1)
 			return (-1);
-		mlx_x->map[loc.i][loc.j] = '0';
-		ft_select_img(mlx_x, "front");
-		// if (status == -1)
-		// 	return (-1);
-		// mlx_x->map[loc.i][loc.j] = '0';
-		// ft_select_img(mlx_x, "front");
+		short_apply_key(mlx_x, loc, "front");
 	}
 	else if (keycode == RIGHT_KEY || keycode == D_KEY)
 	{
 		status = apply_key_do(mlx_x, loc.i, loc.j + 1);
 		if (status == -1)
 			return (-1);
-		mlx_x->map[loc.i][loc.j] = '0';
-		ft_select_img(mlx_x, "right");
-		// if (status == -1)
-		// 	return (-1);
-		// mlx_x->map[loc.i][loc.j] = '0';
-		// ft_select_img(mlx_x, "right");
+		short_apply_key(mlx_x, loc, "right");
 	}
-	ft_put_to_screen(mlx_x);
-	mlx_string_put(mlx_x->mlx, mlx_x->mlx_win, 32, 32, 0xFFFFFF, ft_itoa(mlx_x->moves));
 	return (0);
 }
 
