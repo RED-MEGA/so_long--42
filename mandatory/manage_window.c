@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 00:25:16 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/21 23:56:49 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/22 16:12:51 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,9 @@ void	ft_put_to_screen(t_mlx_win *mlx_x)
 		x = -1;
 		while (++x < mlx_x->x)
 		{
-			if (mlx_x->map[y][x] == 'E' && fp(mlx_x->map, 'C', 'n').i <= 1 
-				|| mlx_x->map[y][x] == 'T')
+			if ((mlx_x->map[y][x] == 'E'
+				&& fp(mlx_x->map, 'C', 'n').i <= 1)
+					|| mlx_x->map[y][x] == 'T')
 				continue ;
 			mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win,
 				ft_short_put_to_screen(mlx_x, x, y),
