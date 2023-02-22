@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 00:25:16 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/22 16:12:51 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/22 23:18:17 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ char	*ft_short_put_to_screen(t_mlx_win *mlx_x, int x, int y)
 		return (mlx_x->img.coin);
 	else if (mlx_x->map[y][x] == 'P')
 		return (mlx_x->img.player.main);
+	else if (mlx_x->map[y][x] == 'T')
+		return (mlx_x->img.enemy);
 	else if (mlx_x->map[y][x] == 'E' && fp(mlx_x->map, 'C', 'n').i > 1)
 		return (mlx_x->img.exit);
 	return (NULL);
@@ -41,8 +43,7 @@ void	ft_put_to_screen(t_mlx_win *mlx_x)
 		while (++x < mlx_x->x)
 		{
 			if ((mlx_x->map[y][x] == 'E'
-				&& fp(mlx_x->map, 'C', 'n').i <= 1)
-					|| mlx_x->map[y][x] == 'T')
+				&& fp(mlx_x->map, 'C', 'n').i <= 1))
 				continue ;
 			mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win,
 				ft_short_put_to_screen(mlx_x, x, y),
