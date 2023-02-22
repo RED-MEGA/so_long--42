@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 01:01:25 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/21 23:52:15 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/22 16:20:57 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ char	*ft_read(char *map_file)
 	full_map = NULL;
 	str = get_next_line(fd);
 	if (!str)
-		ft_printf(2, "Error : Empty File\n");
+		return (ft_printf(2, "Error : Empty File\n"), exit(1), NULL);
 	while (str)
 	{
 		if (str[0] == '\n')
