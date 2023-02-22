@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 12:20:23 by reben-ha          #+#    #+#             */
-/*   Updated: 2022/11/08 18:28:18 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/22 22:56:10 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	ft_strncmp(const char *str1, const char *str2, size_t size)
 	unsigned char	*s1x;
 	unsigned char	*s2x;
 
+	if (str1 == NULL || str2 == NULL)
+		return (-1);
 	s1x = (unsigned char *)str1;
 	s2x = (unsigned char *)str2;
 	i = 0;

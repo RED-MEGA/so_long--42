@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 01:01:25 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/22 16:20:57 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/22 22:54:08 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	check_ex_nb(char **map)
 
 	if (fp(map, 'P', 'n').i != 1
 		|| fp(map, 'E', 'n').i != 1
-		|| fp(map, '0', 'n').i < 1
 		|| fp(map, '1', 'n').i < 1
 		|| fp(map, 'C', 'n').i < 1)
 		return (ft_printf(2, "Error : Invalid Character\n"), exit(1));
