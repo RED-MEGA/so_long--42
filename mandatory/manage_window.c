@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 00:25:16 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/22 23:18:17 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/23 15:36:47 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,24 @@ int	apply_key_do(t_mlx_win *mlx_x, int i, int j)
 	return (0);
 }
 
-void	short_apply_key(t_mlx_win *mlx_x, t_loc loc, char *option)
+int	short_apply_key(t_mlx_win *mlx_x, t_loc loc, char *option)
 {
+	int	status;
+
+	if (ft_strncmp(option, "back", 4) == 0)
+		status = apply_key_do(mlx_x, loc.i - 1, loc.j);
+	else if (ft_strncmp(option, "left", 4) == 0)
+		status = apply_key_do(mlx_x, loc.i, loc.j - 1);
+	else if (ft_strncmp(option, "front", 5) == 0)
+		status = apply_key_do(mlx_x, loc.i + 1, loc.j);
+	else if (ft_strncmp(option, "right", 5) == 0)
+		status = apply_key_do(mlx_x, loc.i, loc.j + 1);
+	if (status == -1)
+		return (-1);
 	mlx_x->map[loc.i][loc.j] = '0';
 	ft_select_img(mlx_x, option);
 	ft_put_to_screen(mlx_x);
+	return (0);
 }
 
 int	apply_key(int keycode, t_mlx_win *mlx_x)
@@ -88,34 +101,14 @@ int	apply_key(int keycode, t_mlx_win *mlx_x)
 		return (ft_destroy(mlx_x), exit(0), 0);
 	loc = fp(mlx_x->map, 'P', 'l');
 	if (keycode == UP_KEY || keycode == W_KEY)
-	{
-		status = apply_key_do(mlx_x, loc.i - 1, loc.j);
-		if (status == -1)
-			return (-1);
-		short_apply_key(mlx_x, loc, "back");
-	}
+		status = short_apply_key(mlx_x, loc, "back");
 	else if (keycode == LEFT_KEY || keycode == A_KEY)
-	{
-		status = apply_key_do(mlx_x, loc.i, loc.j - 1);
-		if (status == -1)
-			return (-1);
-		short_apply_key(mlx_x, loc, "left");
-	}
+		status = short_apply_key(mlx_x, loc, "left");
 	else if (keycode == DOWN_KEY || keycode == S_KEY)
-	{
-		status = apply_key_do(mlx_x, loc.i + 1, loc.j);
-		if (status == -1)
-			return (-1);
-		short_apply_key(mlx_x, loc, "front");
-	}
+		status = short_apply_key(mlx_x, loc, "front");
 	else if (keycode == RIGHT_KEY || keycode == D_KEY)
-	{
-		status = apply_key_do(mlx_x, loc.i, loc.j + 1);
-		if (status == -1)
-			return (-1);
-		short_apply_key(mlx_x, loc, "right");
-	}
-	return (0);
+		status = short_apply_key(mlx_x, loc, "right");
+	return (status);
 }
 
 int	exit_window(t_mlx_win *mlx_x)
