@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 00:26:07 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/23 15:49:09 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/24 12:59:44 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 static void	open_image_player(t_mlx_win *mlx_x)
 {
 	mlx_x->img.player.front = mlx_xpm_file_to_image(mlx_x->mlx,
-			"texture/player/3-front.xpm", &(mlx_x->width), &(mlx_x->height));
+			"texture/player/front.xpm", &(mlx_x->width), &(mlx_x->height));
 	ft_error_str(mlx_x->img.player.front, 1);
 	mlx_x->img.player.back = mlx_xpm_file_to_image(mlx_x->mlx,
-			"texture/player/3-back.xpm", &(mlx_x->width), &(mlx_x->height));
+			"texture/player/back.xpm", &(mlx_x->width), &(mlx_x->height));
 	ft_error_str(mlx_x->img.player.back, 1);
 	mlx_x->img.player.left = mlx_xpm_file_to_image(mlx_x->mlx,
-			"texture/player/3-left.xpm", &(mlx_x->width), &(mlx_x->height));
+			"texture/player/left.xpm", &(mlx_x->width), &(mlx_x->height));
 	ft_error_str(mlx_x->img.player.left, 1);
 	mlx_x->img.player.right = mlx_xpm_file_to_image(mlx_x->mlx,
-			"texture/player/3-right.xpm", &(mlx_x->width), &(mlx_x->height));
+			"texture/player/right.xpm", &(mlx_x->width), &(mlx_x->height));
 	ft_error_str(mlx_x->img.player.right, 1);
 }
 
