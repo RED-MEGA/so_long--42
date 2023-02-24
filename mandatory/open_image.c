@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 00:26:07 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/24 12:59:44 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/24 13:23:17 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,9 @@ static void	open_image_exit_part_three(t_mlx_win *mlx_x)
 
 void	ft_open_image(t_mlx_win *mlx_x)
 {
+	mlx_x->img.blade = mlx_xpm_file_to_image(mlx_x->mlx,
+			"texture/blade.xpm", &(mlx_x->width), &(mlx_x->height));
+	ft_error_str(mlx_x->img.blade, 1);
 	open_image_player(mlx_x);
 	open_image_exit_part_one(mlx_x);
 	open_image_exit_part_two(mlx_x);

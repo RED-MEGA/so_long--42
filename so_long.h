@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 23:26:10 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/21 20:14:06 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/24 13:17:11 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ typedef struct s_image
 	t_frame		exit_hole;
 	void		*enemy;
 	void		*enemy_angry;
+	void		*blade;
 	t_player	player;
 }			t_image;
 

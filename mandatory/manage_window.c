@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 00:25:16 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/23 15:36:47 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/24 13:58:02 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,12 @@ void	ft_put_to_screen(t_mlx_win *mlx_x)
 				x * mlx_x->width, y * mlx_x->height);
 		}
 	}
-	mlx_string_put(mlx_x->mlx, mlx_x->mlx_win, 32, 32,
-		0xFFFFFF,
-		ft_itoa(mlx_x->moves));
+	mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win,
+		mlx_x->img.blade,
+		0, 0);
+	mlx_string_put(mlx_x->mlx, mlx_x->mlx_win, 190, 39,
+		0x00FF00,
+		ft_strjoin("Moves : ", ft_itoa(mlx_x->moves)));
 }
 
 int	apply_key_do(t_mlx_win *mlx_x, int i, int j)
