@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 05:32:04 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/24 19:42:17 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/24 19:44:50 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,8 @@ void	select_img_hole(t_mlx_win *mlx_x, char *img_ch, t_loc loc)
 		loc.j * 100, loc.i * 100);
 }
 
-void	midgard_hole(t_mlx_win *mlx_x)
+void	midgard_hole(t_mlx_win *mlx_x, t_loc loc)
 {
-	t_loc		loc;
-
-	loc = fp(mlx_x->map, 'E', 'l');
 	if (mlx_x->time_midgard <= 14 && fp(mlx_x->map, 'C', 'n').i == 1)
 		select_img_hole(mlx_x, mlx_x->img.exit_2, loc);
 	else if (mlx_x->time_midgard <= 2)
@@ -45,11 +42,9 @@ void	midgard_hole(t_mlx_win *mlx_x)
 	else if (mlx_x->time_midgard <= (2 * 9))
 		select_img_hole(mlx_x, mlx_x->img.exit_hole.frame_9, loc);
 	else if (mlx_x->time_midgard <= (2 * 10))
-	{
-		if (mlx_x->time_midgard == (2 * 10))
-			mlx_x->time_midgard = 0;
 		select_img_hole(mlx_x, mlx_x->img.exit_hole.frame_10, loc);
-	}
+	if (mlx_x->time_midgard == (2 * 10))
+		mlx_x->time_midgard = 0;
 	mlx_x->time_midgard++;
 }
 
@@ -112,7 +107,7 @@ int	animation_sprite(t_mlx_win *mlx_x)
 
 	loc = fp(mlx_x->map, 'C', 'n');
 	if (loc.i == -1 || loc.i == 1)
-		midgard_hole(mlx_x);
+		midgard_hole(mlx_x, fp(mlx_x->map, 'E', 'l'));
 	if ((loc.i == -1 || loc.i == 1 ) && red == 0)
 	{
 		mlx_x->frame = 5;
