@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 20:12:19 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/21 20:17:53 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:00:33 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ int	main(int argc, char **argv)
 	// Display ...
 	ft_select_img(&mlx_x, "front");
 	ft_put_to_screen(&mlx_x);
+	mlx_put_image_to_window(mlx_x.mlx, mlx_x.mlx_win,
+		mlx_x.img.start, (mlx_x.width * mlx_x.x) / 2 - 400, (mlx_x.height * mlx_x.y) / 2 - 100);
 	// game start
 	mlx_hook(mlx_x.mlx_win, KEYPRESS, 0, apply_key, &mlx_x);
 	mlx_hook(mlx_x.mlx_win, DESTROYNOTIFY, 0, exit_window, &mlx_x);
