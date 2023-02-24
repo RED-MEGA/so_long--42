@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 05:32:04 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/24 20:57:47 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/24 21:48:24 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,21 @@ void	midgard_hole(t_mlx_win *mlx_x, t_loc loc)
 	mlx_x->time_midgard++;
 }
 
+static void	part_enemy_animated(t_mlx_win *mlx_x, t_loc loc,
+			int new_x, char *img_enm)
+{
+	if (mlx_x->map[loc.i][new_x] == 'P')
+		return (ft_printf(1, "\033[1;31mYOU ARE DEAD\n"),
+			ft_destroy(mlx_x), exit(0));
+	mlx_do_sync(mlx_x->mlx);
+	mlx_x->map[loc.i][loc.j] = '0';
+	mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, mlx_x->img.floor,
+		loc.j * 100, loc.i * 100);
+	mlx_x->map[loc.i][new_x] = 'T';
+	mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, img_enm,
+		new_x * 100, loc.i * 100);
+}
+
 void	enemy_animated(t_mlx_win *mlx_x, t_loc loc)
 {
 	void		*img_enm;
@@ -64,31 +79,13 @@ void	enemy_animated(t_mlx_win *mlx_x, t_loc loc)
 		return ;
 	if (mlx_x->map[loc.i][loc.j + 1] != '1' && i == 0)
 	{
-		if (mlx_x->map[loc.i][loc.j + 1] == 'P')
-			return (ft_printf(1, "\033[1;31mYOU ARE DEAD\n"),
-				ft_destroy(mlx_x), exit(0));
-		mlx_do_sync(mlx_x->mlx);
-		mlx_x->map[loc.i][loc.j] = '0';
-		mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, mlx_x->img.floor,
-			loc.j * 100, loc.i * 100);
-		mlx_x->map[loc.i][loc.j + 1] = 'T';
-		mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, img_enm,
-			(loc.j + 1) * 100, loc.i * 100);
+		part_enemy_animated(mlx_x, loc, (loc.j + 1), img_enm);
 		if (mlx_x->map[loc.i][loc.j + 2] == '1')
 			i = 1;
 	}
 	else if (mlx_x->map[loc.i][loc.j - 1] != '1' && i == 1)
 	{
-		if (mlx_x->map[loc.i][loc.j - 1] == 'P')
-			return (ft_printf(1, "\033[1;31mYOU ARE DEAD\n"),
-				ft_destroy(mlx_x), exit(0));
-		mlx_do_sync(mlx_x->mlx);
-		mlx_x->map[loc.i][loc.j] = '0';
-		mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, mlx_x->img.floor,
-			loc.j * 100, loc.i * 100);
-		mlx_x->map[loc.i][loc.j - 1] = 'T';
-		mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, img_enm,
-			(loc.j - 1) * 100, loc.i * 100);
+		part_enemy_animated(mlx_x, loc, (loc.j - 1), img_enm);
 		if (mlx_x->map[loc.i][loc.j - 2] == '1')
 			i = 0;
 	}
