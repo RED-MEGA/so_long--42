@@ -6,13 +6,13 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 05:32:04 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/24 19:44:50 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/24 20:57:47 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	select_img_hole(t_mlx_win *mlx_x, char *img_ch, t_loc loc)
+static void	select_img_hole(t_mlx_win *mlx_x, char *img_ch, t_loc loc)
 {
 	mlx_do_sync(mlx_x->mlx);
 	mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, img_ch,
@@ -48,17 +48,13 @@ void	midgard_hole(t_mlx_win *mlx_x, t_loc loc)
 	mlx_x->time_midgard++;
 }
 
-void	enemy_animated(t_mlx_win *mlx_x)
+void	enemy_animated(t_mlx_win *mlx_x, t_loc loc)
 {
-	t_loc		loc;
 	void		*img_enm;
-	void		*img_flo;
 	static int	i;
 
-	loc = fp(mlx_x->map, 'T', 'l');
 	if (loc.i == -1)
 		return ;
-	img_flo = mlx_x->img.floor;
 	if (i == 0)
 		img_enm = mlx_x->img.enemy_angry;
 	else if (i == 1)
@@ -73,7 +69,7 @@ void	enemy_animated(t_mlx_win *mlx_x)
 				ft_destroy(mlx_x), exit(0));
 		mlx_do_sync(mlx_x->mlx);
 		mlx_x->map[loc.i][loc.j] = '0';
-		mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, img_flo,
+		mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, mlx_x->img.floor,
 			loc.j * 100, loc.i * 100);
 		mlx_x->map[loc.i][loc.j + 1] = 'T';
 		mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, img_enm,
@@ -88,7 +84,7 @@ void	enemy_animated(t_mlx_win *mlx_x)
 				ft_destroy(mlx_x), exit(0));
 		mlx_do_sync(mlx_x->mlx);
 		mlx_x->map[loc.i][loc.j] = '0';
-		mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, img_flo,
+		mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, mlx_x->img.floor,
 			loc.j * 100, loc.i * 100);
 		mlx_x->map[loc.i][loc.j - 1] = 'T';
 		mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win, img_enm,
@@ -108,12 +104,12 @@ int	animation_sprite(t_mlx_win *mlx_x)
 	loc = fp(mlx_x->map, 'C', 'n');
 	if (loc.i == -1 || loc.i == 1)
 		midgard_hole(mlx_x, fp(mlx_x->map, 'E', 'l'));
-	if ((loc.i == -1 || loc.i == 1 ) && red == 0)
+	if ((loc.i == -1 || loc.i == 1) && red == 0)
 	{
 		mlx_x->frame = 5;
 		mlx_x->time_enemy = 0;
 		red = 1;
 	}
-	enemy_animated(mlx_x);
+	enemy_animated(mlx_x, fp(mlx_x->map, 'T', 'l'));
 	return (0);
 }
