@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 00:26:07 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/22 23:54:57 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/23 15:49:09 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	open_image_player(t_mlx_win *mlx_x)
 	ft_error_str(mlx_x->img.player.right, 1);
 }
 
-static void	open_image_exit(t_mlx_win *mlx_x)
+static void	open_image_exit_part_one(t_mlx_win *mlx_x)
 {
 	mlx_x->img.exit = mlx_xpm_file_to_image(mlx_x->mlx, "texture/door/exit.xpm",
 			&(mlx_x->width), &(mlx_x->height));
@@ -45,6 +45,10 @@ static void	open_image_exit(t_mlx_win *mlx_x)
 			"texture/door/fps/2.xpm",
 			&(mlx_x->width), &(mlx_x->height));
 	ft_error_str(mlx_x->img.exit_hole.frame_2, 1);
+}
+
+static void	open_image_exit_part_two(t_mlx_win *mlx_x)
+{
 	mlx_x->img.exit_hole.frame_3 = mlx_xpm_file_to_image(mlx_x->mlx,
 			"texture/door/fps/3.xpm",
 			&(mlx_x->width), &(mlx_x->height));
@@ -61,6 +65,10 @@ static void	open_image_exit(t_mlx_win *mlx_x)
 			"texture/door/fps/6.xpm",
 			&(mlx_x->width), &(mlx_x->height));
 	ft_error_str(mlx_x->img.exit_hole.frame_6, 1);
+}
+
+static void	open_image_exit_part_three(t_mlx_win *mlx_x)
+{
 	mlx_x->img.exit_hole.frame_7 = mlx_xpm_file_to_image(mlx_x->mlx,
 			"texture/door/fps/7.xpm",
 			&(mlx_x->width), &(mlx_x->height));
@@ -82,7 +90,9 @@ static void	open_image_exit(t_mlx_win *mlx_x)
 void	ft_open_image(t_mlx_win *mlx_x)
 {
 	open_image_player(mlx_x);
-	open_image_exit(mlx_x);
+	open_image_exit_part_one(mlx_x);
+	open_image_exit_part_two(mlx_x);
+	open_image_exit_part_three(mlx_x);
 	mlx_x->img.floor = mlx_xpm_file_to_image(mlx_x->mlx,
 			"texture/floor.xpm", &(mlx_x->width), &(mlx_x->height));
 	ft_error_str(mlx_x->img.floor, 1);
