@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 05:32:04 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/24 21:48:24 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/25 16:35:51 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,6 @@ void	enemy_animated(t_mlx_win *mlx_x, t_loc loc)
 	void		*img_enm;
 	static int	i;
 
-	if (loc.i == -1)
-		return ;
 	if (i == 0)
 		img_enm = mlx_x->img.enemy_angry;
 	else if (i == 1)
@@ -107,6 +105,7 @@ int	animation_sprite(t_mlx_win *mlx_x)
 		mlx_x->time_enemy = 0;
 		red = 1;
 	}
-	enemy_animated(mlx_x, fp(mlx_x->map, 'T', 'l'));
+	if (fp(mlx_x->map, 'T', 'l').i >= 1)
+		enemy_animated(mlx_x, fp(mlx_x->map, 'T', 'l'));
 	return (0);
 }
