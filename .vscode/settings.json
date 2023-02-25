@@ -1,7 +1,9 @@
 {
 	"C_Cpp.errorSquiggles": "disabled",
 	"cSpell.words": [
+		"DESTROYNOTIFY",
 		"oloc",
-		"reben"
+		"reben",
+		"REDMEGA"
 	]
 }
