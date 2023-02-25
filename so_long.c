@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 20:12:19 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/25 17:55:57 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/25 18:46:55 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,6 @@ void	ft_error_str(void *status, int code)
 {
 	if (status == NULL)
 		return (perror("Error "), exit(code));
-}
-
-void	ft_select_img(t_mlx_win *mlx_x, char *option)
-{
-	if (ft_strncmp(option, "front", 5) == 0)
-		mlx_x->img.player.main = mlx_x->img.player.front;
-	else if (ft_strncmp(option, "back", 4) == 0)
-		mlx_x->img.player.main = mlx_x->img.player.back;
-	else if (ft_strncmp(option, "left", 4) == 0)
-		mlx_x->img.player.main = mlx_x->img.player.left;
-	else if (ft_strncmp(option, "right", 5) == 0)
-		mlx_x->img.player.main = mlx_x->img.player.right;
-	else
-		return ;
 }
 
 void	ft_destroy(t_mlx_win *mlx_x)

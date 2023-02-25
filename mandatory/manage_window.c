@@ -6,11 +6,25 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 00:25:16 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/25 18:15:45 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/25 18:47:02 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+void	ft_select_img(t_mlx_win *mlx_x, char *option)
+{
+	if (ft_strncmp(option, "front", 5) == 0)
+		mlx_x->img.player.main = mlx_x->img.player.front;
+	else if (ft_strncmp(option, "back", 4) == 0)
+		mlx_x->img.player.main = mlx_x->img.player.back;
+	else if (ft_strncmp(option, "left", 4) == 0)
+		mlx_x->img.player.main = mlx_x->img.player.left;
+	else if (ft_strncmp(option, "right", 5) == 0)
+		mlx_x->img.player.main = mlx_x->img.player.right;
+	else
+		return ;
+}
 
 int	apply_key_do(t_mlx_win *mlx_x, int i, int j)
 {
