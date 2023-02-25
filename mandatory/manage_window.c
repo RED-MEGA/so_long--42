@@ -6,11 +6,24 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 00:25:16 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/25 13:28:58 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/25 15:51:39 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+void	ft_put_text(t_mlx_win *mlx_x)
+{
+	mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win,
+		mlx_x->img.blade,
+		0, 0);
+	mlx_string_put(mlx_x->mlx, mlx_x->mlx_win, 188, 39,
+		0xFF0000,
+		ft_strjoin("| Moves:", ft_itoa(mlx_x->moves)));
+	mlx_string_put(mlx_x->mlx, mlx_x->mlx_win, 150, 40,
+		0x1D1CE5,
+		ft_strjoin("C:", ft_itoa(fp(mlx_x->map, 'C', 'n').i)));
+}
 
 char	*ft_short_put_to_screen(t_mlx_win *mlx_x, int x, int y)
 {
@@ -50,12 +63,7 @@ void	ft_put_to_screen(t_mlx_win *mlx_x)
 				x * mlx_x->width, y * mlx_x->height);
 		}
 	}
-	mlx_put_image_to_window(mlx_x->mlx, mlx_x->mlx_win,
-		mlx_x->img.blade,
-		0, 0);
-	mlx_string_put(mlx_x->mlx, mlx_x->mlx_win, 190, 39,
-		0xFF0000,
-		ft_strjoin("Moves : ", ft_itoa(mlx_x->moves)));
+	ft_put_text(mlx_x);
 }
 
 int	apply_key_do(t_mlx_win *mlx_x, int i, int j)
