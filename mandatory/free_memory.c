@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 14:16:46 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/27 14:17:13 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/27 14:48:09 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_free(char **str)
 	free(str);
 }
 
-void	ft_destroy(t_mlx_win *mlx_x)
+void	ft_destroy_img(t_mlx_win *mlx_x)
 {
 	mlx_destroy_image(mlx_x->mlx, mlx_x->img.coin);
 	mlx_destroy_image(mlx_x->mlx, mlx_x->img.enemy);
@@ -45,4 +45,10 @@ void	ft_destroy(t_mlx_win *mlx_x)
 	mlx_destroy_image(mlx_x->mlx, mlx_x->img.exit_hole.frame_8);
 	mlx_destroy_image(mlx_x->mlx, mlx_x->img.exit_hole.frame_9);
 	mlx_destroy_image(mlx_x->mlx, mlx_x->img.exit_hole.frame_10);
+}
+
+void	ft_destroy(t_mlx_win *mlx_x)
+{
+	ft_destroy_img(mlx_x);
+	ft_free(mlx_x->map);
 }
