@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 20:12:19 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/27 17:39:43 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/27 18:14:11 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,11 @@ int	main(int argc, char **argv)
 	mlx_x.map = ft_input_manage(argv[1]);
 	short_initialize(&mlx_x);
 	mlx_x.mlx = mlx_init();
+	ft_error_str(mlx_x.mlx, 1);
 	ft_open_image(&mlx_x);
 	mlx_x.mlx_win = mlx_new_window(mlx_x.mlx, (mlx_x.x * mlx_x.width),
 			(mlx_x.y * mlx_x.height), "So_long REDMEGA-Edition");
+	ft_error_str(mlx_x.mlx_win, 1);
 	ft_select_img(&mlx_x, "front");
 	ft_put_to_screen(&mlx_x);
 	mlx_put_image_to_window(mlx_x.mlx, mlx_x.mlx_win, mlx_x.img.start,
