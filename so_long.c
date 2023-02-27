@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 20:12:19 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/02/27 14:17:19 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/02/27 17:39:43 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,26 @@ void	ft_error_str(void *status, int code)
 		return (perror("Error "), exit(code));
 }
 
+void	short_initialize(t_mlx_win *mlx_x)
+{
+	mlx_x->frame = 2500;
+	mlx_x->moves = 0;
+	mlx_x->time_enemy = 0;
+	mlx_x->time_midgard = 0;
+	mlx_x->y = 0;
+	mlx_x->x = ft_strlen(mlx_x->map[0]);
+	while (mlx_x->map[mlx_x->y])
+		mlx_x->y++;
+}
+
 int	main(int argc, char **argv)
 {
 	t_mlx_win	mlx_x;
 
 	if (argc <= 1)
 		return (ft_printf(2, "Error : Invalid argument\n"), 1);
-	mlx_x.frame = 2500;
 	mlx_x.map = ft_input_manage(argv[1]);
-	mlx_x.moves = 0;
-	mlx_x.time_enemy = 0;
-	mlx_x.time_midgard = 0;
-	mlx_x.y = 0;
-	mlx_x.x = ft_strlen(mlx_x.map[0]);
-	while (mlx_x.map[mlx_x.y])
-		mlx_x.y++;
+	short_initialize(&mlx_x);
 	mlx_x.mlx = mlx_init();
 	ft_open_image(&mlx_x);
 	mlx_x.mlx_win = mlx_new_window(mlx_x.mlx, (mlx_x.x * mlx_x.width),
