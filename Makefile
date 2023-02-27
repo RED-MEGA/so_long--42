@@ -6,7 +6,7 @@
 #    By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/08 23:26:08 by reben-ha          #+#    #+#              #
-#    Updated: 2023/02/25 18:16:21 by reben-ha         ###   ########.fr        #
+#    Updated: 2023/02/27 14:19:34 by reben-ha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC = so_long.c \
 		mandatory/put_to_screen.c \
 		mandatory/manage_window.c \
 		mandatory/open_image.c \
+		mandatory/free_memory.c \
 		bonus/bonus.c
 
 OBJ = $(SRC:.c=.o)
